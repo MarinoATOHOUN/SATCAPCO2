@@ -99,11 +99,11 @@ const Contact = () => {
                 <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
                   <MapPin className="h-6 w-6 text-primary" />
                 </div>
-                <CardTitle>Visit Us</CardTitle>
+                <CardTitle>Headquarter</CardTitle>
                 <CardDescription>Come say hello</CardDescription>
               </CardHeader>
               <CardContent>
-                <p className="text-sm font-medium">Fidjrosse - Cotonou - Bénin</p>
+                <p className="text-sm font-medium">Fidjrossè, Cotonou, Benin</p>
               </CardContent>
             </Card>
           </div>

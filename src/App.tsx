@@ -16,6 +16,12 @@ import DataDownload from "./pages/DataDownload";
 import Donation from "./pages/Donation";
 import Partners from "./pages/Partners";
 import Settings from "./pages/Settings";
+import SatelliteData from "./pages/features/SatelliteData";
+import GlobalMapping from "./pages/features/GlobalMapping";
+import DataAnalytics from "./pages/features/DataAnalytics";
+import TrendAnalysis from "./pages/features/TrendAnalysis";
+import ApiAccess from "./pages/features/ApiAccess";
+import CarbonMarket from "./pages/features/CarbonMarket";
 
 const queryClient = new QueryClient();
 
@@ -38,6 +44,12 @@ function App() {
           <Route path="/donation" element={<Donation />} />
           <Route path="/partners" element={<Partners />} />
           <Route path="/settings" element={<Settings />} />
+          <Route path="/features/satellite-data" element={<SatelliteData />} />
+          <Route path="/features/global-mapping" element={<GlobalMapping />} />
+          <Route path="/features/data-analytics" element={<DataAnalytics />} />
+          <Route path="/features/trend-analysis" element={<TrendAnalysis />} />
+          <Route path="/features/api-access" element={<ApiAccess />} />
+          <Route path="/features/carbon-market" element={<CarbonMarket />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

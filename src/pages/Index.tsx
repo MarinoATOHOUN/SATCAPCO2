@@ -131,65 +131,77 @@ const Index = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <Card className="p-6 hover:shadow-elevated transition-shadow">
-              <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
-                <Satellite className="h-6 w-6 text-primary" />
-              </div>
-              <h3 className="text-xl font-semibold mb-2">Satellite Data</h3>
-              <p className="text-muted-foreground">
-                Access high-resolution satellite imagery and real-time emission data from multiple sources
-              </p>
-            </Card>
+            <Link to="/features/satellite-data">
+              <Card className="p-6 hover:shadow-elevated transition-shadow h-full">
+                <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
+                  <Satellite className="h-6 w-6 text-primary" />
+                </div>
+                <h3 className="text-xl font-semibold mb-2">Satellite Data</h3>
+                <p className="text-muted-foreground">
+                  Access high-resolution satellite imagery and real-time emission data from multiple sources
+                </p>
+              </Card>
+            </Link>
 
-            <Card className="p-6 hover:shadow-elevated transition-shadow">
-              <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
-                <Globe2 className="h-6 w-6 text-primary" />
-              </div>
-              <h3 className="text-xl font-semibold mb-2">Global Mapping</h3>
-              <p className="text-muted-foreground">
-                Interactive maps to visualize emission hotspots and trends across the globe
-              </p>
-            </Card>
+            <Link to="/features/global-mapping">
+              <Card className="p-6 hover:shadow-elevated transition-shadow h-full">
+                <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
+                  <Globe2 className="h-6 w-6 text-primary" />
+                </div>
+                <h3 className="text-xl font-semibold mb-2">Global Mapping</h3>
+                <p className="text-muted-foreground">
+                  Interactive maps to visualize emission hotspots and trends across the globe
+                </p>
+              </Card>
+            </Link>
 
-            <Card className="p-6 hover:shadow-elevated transition-shadow">
-              <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
-                <Database className="h-6 w-6 text-primary" />
-              </div>
-              <h3 className="text-xl font-semibold mb-2">Data Analytics and Data Quality</h3>
-              <p className="text-muted-foreground">
-                Advanced analytics tools to process and interpret complex emission data
-              </p>
-            </Card>
+            <Link to="/features/data-analytics">
+              <Card className="p-6 hover:shadow-elevated transition-shadow h-full">
+                <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
+                  <Database className="h-6 w-6 text-primary" />
+                </div>
+                <h3 className="text-xl font-semibold mb-2">Data Analytics and Data Quality</h3>
+                <p className="text-muted-foreground">
+                  Advanced analytics tools to process and interpret complex emission data
+                </p>
+              </Card>
+            </Link>
 
-            <Card className="p-6 hover:shadow-elevated transition-shadow">
-              <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
-                <TrendingUp className="h-6 w-6 text-primary" />
-              </div>
-              <h3 className="text-xl font-semibold mb-2">Trend Analysis</h3>
-              <p className="text-muted-foreground">
-                Track emission trends over time and predict future patterns
-              </p>
-            </Card>
+            <Link to="/features/trend-analysis">
+              <Card className="p-6 hover:shadow-elevated transition-shadow h-full">
+                <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
+                  <TrendingUp className="h-6 w-6 text-primary" />
+                </div>
+                <h3 className="text-xl font-semibold mb-2">Trend Analysis</h3>
+                <p className="text-muted-foreground">
+                  Track emission trends over time and predict future patterns
+                </p>
+              </Card>
+            </Link>
 
-            <Card className="p-6 hover:shadow-elevated transition-shadow">
-              <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
-                <Users className="h-6 w-6 text-primary" />
-              </div>
-              <h3 className="text-xl font-semibold mb-2">API Access</h3>
-              <p className="text-muted-foreground">
-                Integrate our data into your applications with our comprehensive API
-              </p>
-            </Card>
+            <Link to="/features/api-access">
+              <Card className="p-6 hover:shadow-elevated transition-shadow h-full">
+                <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
+                  <Users className="h-6 w-6 text-primary" />
+                </div>
+                <h3 className="text-xl font-semibold mb-2">API Access</h3>
+                <p className="text-muted-foreground">
+                  Integrate our data into your applications with our comprehensive API
+                </p>
+              </Card>
+            </Link>
 
-            <Card className="p-6 hover:shadow-elevated transition-shadow">
-              <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
-                <CheckCircle2 className="h-6 w-6 text-primary" />
-              </div>
-              <h3 className="text-xl font-semibold mb-2">Carbon Market</h3>
-              <p className="text-muted-foreground">
-                Allows governments, companies, and carbon credit platforms to rely on independent, satellite-based verification of emission baselines and removal activities.
-              </p>
-            </Card>
+            <Link to="/features/carbon-market">
+              <Card className="p-6 hover:shadow-elevated transition-shadow h-full">
+                <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
+                  <CheckCircle2 className="h-6 w-6 text-primary" />
+                </div>
+                <h3 className="text-xl font-semibold mb-2">Carbon Market</h3>
+                <p className="text-muted-foreground">
+                  Allows governments, companies, and carbon credit platforms to rely on independent, satellite-based verification of emission baselines and removal activities.
+                </p>
+              </Card>
+            </Link>
           </div>
         </div>
       </section>

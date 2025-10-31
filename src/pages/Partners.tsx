@@ -30,7 +30,16 @@ const Partners = () => {
     email: "",
     phone: "",
     partnershipType: "",
-    message: ""
+    message: "",
+    organisationType: "",
+    incomeSource: "",
+    creationDate: "",
+    country: "",
+    address: "",
+    registrationNumber: "",
+    website: "",
+    fteEmployees: "",
+    turnover: ""
   });
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -56,7 +65,16 @@ const Partners = () => {
       email: "",
       phone: "",
       partnershipType: "",
-      message: ""
+      message: "",
+      organisationType: "",
+      incomeSource: "",
+      creationDate: "",
+      country: "",
+      address: "",
+      registrationNumber: "",
+      website: "",
+      fteEmployees: "",
+      turnover: ""
     });
   };
 
@@ -206,7 +224,7 @@ const Partners = () => {
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <Label htmlFor="companyName">Organisation Name *</Label>
+                    <Label htmlFor="companyName">Official name of your organisation *</Label>
                     <Input
                       id="companyName"
                       placeholder="Your Company"
@@ -251,6 +269,106 @@ const Partners = () => {
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                     />
                   </div>
+                </div>
+                
+                <div className="grid md:grid-cols-2 gap-4">
+                    <div className="space-y-2">
+                        <Label htmlFor="organisationType">Type of organisation</Label>
+                        <Input
+                        id="organisationType"
+                        placeholder="e.g. HEI, private limited company"
+                        value={formData.organisationType}
+                        onChange={(e) => setFormData({ ...formData, organisationType: e.target.value })}
+                        />
+                    </div>
+
+                    <div className="space-y-2">
+                        <Label htmlFor="incomeSource">Main source of income</Label>
+                        <Input
+                        id="incomeSource"
+                        placeholder="e.g. funding, investment"
+                        value={formData.incomeSource}
+                        onChange={(e) => setFormData({ ...formData, incomeSource: e.target.value })}
+                        />
+                    </div>
+                </div>
+
+                <div className="grid md:grid-cols-2 gap-4">
+                    <div className="space-y-2">
+                        <Label htmlFor="creationDate">When was the organisation created?</Label>
+                        <Input
+                        id="creationDate"
+                        type="date"
+                        value={formData.creationDate}
+                        onChange={(e) => setFormData({ ...formData, creationDate: e.target.value })}
+                        />
+                    </div>
+
+                    <div className="space-y-2">
+                        <Label htmlFor="country">In which country is the organisation registered?</Label>
+                        <Input
+                        id="country"
+                        placeholder="e.g. France"
+                        value={formData.country}
+                        onChange={(e) => setFormData({ ...formData, country: e.target.value })}
+                        />
+                    </div>
+                </div>
+                
+                <div className="space-y-2">
+                    <Label htmlFor="address">Address of the organisation</Label>
+                    <Input
+                    id="address"
+                    placeholder="123 Main Street, 12345 City"
+                    value={formData.address}
+                    onChange={(e) => setFormData({ ...formData, address: e.target.value })}
+                    />
+                </div>
+
+                <div className="grid md:grid-cols-2 gap-4">
+                    <div className="space-y-2">
+                        <Label htmlFor="registrationNumber">Company registration number</Label>
+                        <Input
+                        id="registrationNumber"
+                        placeholder="e.g. 123456789"
+                        value={formData.registrationNumber}
+                        onChange={(e) => setFormData({ ...formData, registrationNumber: e.target.value })}
+                        />
+                    </div>
+
+                    <div className="space-y-2">
+                        <Label htmlFor="website">Organization’s web page</Label>
+                        <Input
+                        id="website"
+                        type="url"
+                        placeholder="https://example.com"
+                        value={formData.website}
+                        onChange={(e) => setFormData({ ...formData, website: e.target.value })}
+                        />
+                    </div>
+                </div>
+
+                <div className="grid md:grid-cols-2 gap-4">
+                    <div className="space-y-2">
+                        <Label htmlFor="fteEmployees">How many FTE employees does you organisation have?</Label>
+                        <Input
+                        id="fteEmployees"
+                        type="number"
+                        placeholder="e.g. 100"
+                        value={formData.fteEmployees}
+                        onChange={(e) => setFormData({ ...formData, fteEmployees: e.target.value })}
+                        />
+                    </div>
+
+                    <div className="space-y-2">
+                        <Label htmlFor="turnover">What was your turnover last year?</Label>
+                        <Input
+                        id="turnover"
+                        placeholder="e.g. 1,000,000"
+                        value={formData.turnover}
+                        onChange={(e) => setFormData({ ...formData, turnover: e.target.value })}
+                        />
+                    </div>
                 </div>
 
                 <div className="space-y-2">
