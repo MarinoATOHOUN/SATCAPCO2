@@ -7,10 +7,11 @@ import { EmissionsChart } from "@/components/EmissionsChart";
 import { EmissionsDonut } from "@/components/EmissionsDonut";
 import { EmissionsLineChart } from "@/components/EmissionsLineChart";
 import { EmissionsAreaChart } from "@/components/EmissionsAreaChart";
-import { LogOut, User, TrendingUp, Activity, BarChart3, PieChart } from "lucide-react";
+import { TrendingUp, Activity, BarChart3, PieChart } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar, ScatterChart, Scatter, ZAxis } from "recharts";
 import Header from "@/components/Header";
+import { FilterBar } from "@/components/FilterBar";
 
 const regionData = [
   { region: "North America", CO2: 450, CH4: 2.0, CO: 0.5 },
@@ -46,6 +47,11 @@ const DataVisualization = () => {
 
       {/* Main Content */}
       <main className="container mx-auto px-4 py-8">
+        {/* Filter Bar */}
+        <div className="mb-8">
+          <FilterBar />
+        </div>
+
         {/* Page Title */}
         <div className="bg-green-bg rounded-lg p-6 mb-8">
           <h1 className="text-3xl font-bold text-primary text-center">

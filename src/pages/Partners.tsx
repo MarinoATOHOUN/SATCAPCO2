@@ -83,25 +83,25 @@ const Partners = () => {
     {
       icon: Building2,
       title: "Research Partners",
-      description: "Collaborate on climate research and satellite data analysis to advance environmental science.",
+      description: "Collaborate on climate research and satellite data analysis to advance environmental science and public health.",
       benefits: ["Access to raw satellite data", "Co-authorship opportunities", "Joint research grants"]
     },
     {
       icon: Globe,
       title: "Technology Partners",
-      description: "Integrate our CO₂ monitoring data into your applications and services.",
+      description: "Integrate our CO₂, CH4, CO, NO2 monitoring data into your applications and services.",
       benefits: ["API access", "Technical support", "White-label solutions"]
     },
     {
       icon: Users,
       title: "NGO & Non-Profit",
-      description: "Partner with us to amplify climate action and environmental advocacy efforts.",
+      description: "Partner with us to amplify climate action, environmental advocacy efforts, and health.",
       benefits: ["Discounted access", "Custom reports", "Advocacy tools"]
     },
     {
       icon: TrendingUp,
       title: "Corporate Partners",
-      description: "Help your organization meet sustainability goals with accurate emissions data.",
+      description: "Help your organization meet sustainability goals with accurate in situ data on GHG emissions and post-emission concentrations based on atmospheric regions.",
       benefits: ["Enterprise solutions", "Dedicated support", "Custom analytics"]
     }
   ];
@@ -190,7 +190,7 @@ const Partners = () => {
               </div>
               <h3 className="font-semibold text-lg mb-2">Global Network</h3>
               <p className="text-muted-foreground">
-                Join a worldwide community committed to climate action
+                Join a worldwide community committed to climate action & health
               </p>
             </div>
           </div>
@@ -245,7 +245,7 @@ const Partners = () => {
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="phone">Phone Number</Label>
+                    <Label htmlFor="phone">Phone Number *</Label>
                     <Input
                       id="phone"
                       type="tel"
@@ -258,7 +258,7 @@ const Partners = () => {
                 
                 <div className="grid md:grid-cols-2 gap-4">
                     <div className="space-y-2">
-                        <Label htmlFor="organisationType">Type of organisation</Label>
+                        <Label htmlFor="organisationType">Type of organisation *</Label>
                         <Input
                         id="organisationType"
                         placeholder="e.g. HEI, private limited company"
@@ -268,7 +268,7 @@ const Partners = () => {
                     </div>
 
                     <div className="space-y-2">
-                        <Label htmlFor="incomeSource">Main source of income</Label>
+                        <Label htmlFor="incomeSource">Main source of income *</Label>
                         <Input
                         id="incomeSource"
                         placeholder="e.g. funding, investment"
@@ -280,7 +280,7 @@ const Partners = () => {
 
                 <div className="grid md:grid-cols-2 gap-4">
                     <div className="space-y-2">
-                        <Label htmlFor="creationDate">When was the organisation created?</Label>
+                        <Label htmlFor="creationDate">When was the organisation created? *</Label>
                         <Input
                         id="creationDate"
                         type="date"
@@ -290,7 +290,7 @@ const Partners = () => {
                     </div>
 
                     <div className="space-y-2">
-                        <Label htmlFor="country">In which country is the organisation registered?</Label>
+                        <Label htmlFor="country">In which country is the organisation registered? *</Label>
                         <Input
                         id="country"
                         placeholder="e.g. France"
@@ -301,7 +301,7 @@ const Partners = () => {
                 </div>
                 
                 <div className="space-y-2">
-                    <Label htmlFor="address">Address of the organisation</Label>
+                    <Label htmlFor="address">Address of the organisation *</Label>
                     <Input
                     id="address"
                     placeholder="123 Main Street, 12345 City"
@@ -312,7 +312,7 @@ const Partners = () => {
 
                 <div className="grid md:grid-cols-2 gap-4">
                     <div className="space-y-2">
-                        <Label htmlFor="registrationNumber">Company registration number</Label>
+                        <Label htmlFor="registrationNumber">Company registration number *</Label>
                         <Input
                         id="registrationNumber"
                         placeholder="e.g. 123456789"
@@ -322,7 +322,7 @@ const Partners = () => {
                     </div>
 
                     <div className="space-y-2">
-                        <Label htmlFor="website">Organization’s web page</Label>
+                        <Label htmlFor="website">Organization’s web page *</Label>
                         <Input
                         id="website"
                         type="url"
@@ -335,7 +335,7 @@ const Partners = () => {
 
                 <div className="grid md:grid-cols-2 gap-4">
                     <div className="space-y-2">
-                        <Label htmlFor="fteEmployees">How many FTE employees does you organisation have?</Label>
+                        <Label htmlFor="fteEmployees">How many FTE employees does you organisation have? *</Label>
                         <Input
                         id="fteEmployees"
                         type="number"
@@ -346,7 +346,7 @@ const Partners = () => {
                     </div>
 
                     <div className="space-y-2">
-                        <Label htmlFor="turnover">What was your turnover last year?</Label>
+                        <Label htmlFor="turnover">What was your turnover last year? *</Label>
                         <Input
                         id="turnover"
                         placeholder="e.g. 1,000,000"
@@ -375,7 +375,7 @@ const Partners = () => {
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="message">Tell us about your interest</Label>
+                  <Label htmlFor="message">Tell us about your interest *</Label>
                   <Textarea
                     id="message"
                     placeholder="Describe your organization and how you'd like to collaborate..."
