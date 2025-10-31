@@ -7,6 +7,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { Logo } from "@/components/Logo";
+import Header from "@/components/Header";
 import {
   Handshake,
   Globe,
@@ -107,23 +108,7 @@ const Partners = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-background to-green-bg/20">
-      {/* Header */}
-      <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <div className="container flex h-16 items-center justify-between">
-          <Logo />
-          <nav className="hidden md:flex items-center gap-6">
-            <Link to="/satcapco2" className="text-sm font-medium hover:text-primary transition-colors">
-              Home
-            </Link>
-            <Link to="/dashboard" className="text-sm font-medium hover:text-primary transition-colors">
-              Dashboard
-            </Link>
-            <Link to="/contact" className="text-sm font-medium hover:text-primary transition-colors">
-              Contact
-            </Link>
-          </nav>
-        </div>
-      </header>
+      <Header />
 
       {/* Hero Section */}
       <section className="container py-20 md:py-28">
@@ -426,16 +411,46 @@ const Partners = () => {
       </section>
 
       {/* Footer */}
-      <footer className="border-t bg-muted/50 py-12 mt-20">
-        <div className="container">
-          <div className="flex flex-col items-center text-center gap-6">
-            <Logo />
-            <p className="text-muted-foreground max-w-md">
-              Join us in our mission to monitor and combat climate change through innovative satellite technology.
-            </p>
-            <p className="text-sm text-muted-foreground">
-              © 2024 SATCAP-CO₂. All rights reserved.
-            </p>
+      <footer className="border-t border-border py-12">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+            <div>
+              <Logo className="mb-4" />
+              <p className="text-sm text-muted-foreground">
+                Monitoring greenhouse gas emissions for a sustainable future.
+              </p>
+            </div>
+            
+            <div>
+              <h3 className="font-semibold mb-4">Platform</h3>
+              <ul className="space-y-2 text-sm text-muted-foreground">
+                <li><a href="#features" className="hover:text-primary transition-colors">Features</a></li>
+                <li><Link to="/dashboard" className="hover:text-primary transition-colors">Dashboard</Link></li>
+                <li><Link to="/faq" className="hover:text-primary transition-colors">FAQ</Link></li>
+              </ul>
+            </div>
+            
+            <div>
+              <h3 className="font-semibold mb-4">Resources</h3>
+              <ul className="space-y-2 text-sm text-muted-foreground">
+                <li><a href="#about" className="hover:text-primary transition-colors">About Us</a></li>
+                <li><Link to="/contact" className="hover:text-primary transition-colors">Contact</Link></li>
+                <li><Link to="/donation" className="hover:text-primary transition-colors">Donate</Link></li>
+                <li><Link to="/partners" className="hover:text-primary transition-colors">Partners</Link></li>
+              </ul>
+            </div>
+            
+            <div>
+              <h3 className="font-semibold mb-4">Legal</h3>
+              <ul className="space-y-2 text-sm text-muted-foreground">
+                <li><a href="#" className="hover:text-primary transition-colors">Privacy Policy</a></li>
+                <li><a href="#" className="hover:text-primary transition-colors">Terms of Service</a></li>
+              </ul>
+            </div>
+          </div>
+          
+          <div className="border-t border-border pt-8 text-center text-sm text-muted-foreground">
+            <p>© 2025 SATCAP-CO₂. All rights reserved.</p>
           </div>
         </div>
       </footer>

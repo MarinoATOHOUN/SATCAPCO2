@@ -1,12 +1,13 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Mail, MapPin, Phone, Send } from "lucide-react";
-import { Logo } from "@/components/Logo";
 import { useToast } from "@/hooks/use-toast";
+import Header from "@/components/Header";
+import { Link } from "react-router-dom";
+import { Logo } from "@/components/Logo";
 
 const Contact = () => {
   const { toast } = useToast();
@@ -21,49 +22,24 @@ const Contact = () => {
       setIsSubmitting(false);
       toast({
         title: "Message sent!",
-        description: "We'll get back to you as soon as possible.",
+        description: "We\'ll get back to you as soon as possible.",
       });
       (e.target as HTMLFormElement).reset();
     }, 1000);
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-background to-primary/5">
-      <header className="border-b bg-background/80 backdrop-blur-sm sticky top-0 z-50">
-        <div className="container mx-auto px-4 py-4">
-          <div className="flex items-center justify-between">
-            <Logo />
-            
-            <nav className="hidden md:flex items-center gap-6">
-              <Link to="/dashboard" className="text-sm font-medium text-foreground hover:text-primary">
-                Home
-              </Link>
-              <Link to="/profile" className="text-sm font-medium text-foreground hover:text-primary">
-                Profile
-              </Link>
-              <Link to="/faq" className="text-sm font-medium text-foreground hover:text-primary">
-                FAQ
-              </Link>
-              <Link to="/contact" className="text-sm font-medium text-primary hover:text-primary/80">
-                Contact
-              </Link>
-            </nav>
-            
-            <Button variant="outline" asChild>
-              <Link to="/">Logout</Link>
-            </Button>
-          </div>
-        </div>
-      </header>
+    <div className="min-h-screen bg-gradient-to-br from-background via-background to-primary/5 flex flex-col">
+      <Header />
 
-      <main className="container mx-auto px-4 py-12">
+      <main className="container mx-auto px-4 py-12 flex-grow">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-12">
             <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
               Get in Touch
             </h1>
             <p className="text-muted-foreground text-lg">
-              Have a question or need support? We're here to help.
+              Have a question or need support? We\'re here to help.
             </p>
           </div>
 
@@ -112,7 +88,7 @@ const Contact = () => {
             <CardHeader>
               <CardTitle>Send us a Message</CardTitle>
               <CardDescription>
-                Fill out the form below and we'll get back to you within 24 hours
+                Fill out the form below and we\'ll get back to you within 24 hours
               </CardDescription>
             </CardHeader>
             <CardContent>
@@ -160,6 +136,49 @@ const Contact = () => {
           </Card>
         </div>
       </main>
+      <footer className="border-t border-border py-12">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+            <div>
+              <Logo className="mb-4" />
+              <p className="text-sm text-muted-foreground">
+                Monitoring greenhouse gas emissions for a sustainable future.
+              </p>
+            </div>
+            
+            <div>
+              <h3 className="font-semibold mb-4">Platform</h3>
+              <ul className="space-y-2 text-sm text-muted-foreground">
+                <li><a href="#features" className="hover:text-primary transition-colors">Features</a></li>
+                <li><Link to="/dashboard" className="hover:text-primary transition-colors">Dashboard</Link></li>
+                <li><Link to="/faq" className="hover:text-primary transition-colors">FAQ</Link></li>
+              </ul>
+            </div>
+            
+            <div>
+              <h3 className="font-semibold mb-4">Resources</h3>
+              <ul className="space-y-2 text-sm text-muted-foreground">
+                <li><a href="#about" className="hover:text-primary transition-colors">About Us</a></li>
+                <li><Link to="/contact" className="hover:text-primary transition-colors">Contact</Link></li>
+                <li><Link to="/donation" className="hover:text-primary transition-colors">Donate</Link></li>
+                <li><Link to="/partners" className="hover:text-primary transition-colors">Partners</Link></li>
+              </ul>
+            </div>
+            
+            <div>
+              <h3 className="font-semibold mb-4">Legal</h3>
+              <ul className="space-y-2 text-sm text-muted-foreground">
+                <li><a href="#" className="hover:text-primary transition-colors">Privacy Policy</a></li>
+                <li><a href="#" className="hover:text-primary transition-colors">Terms of Service</a></li>
+              </ul>
+            </div>
+          </div>
+          
+          <div className="border-t border-border pt-8 text-center text-sm text-muted-foreground">
+            <p>© 2025 SATCAP-CO₂. All rights reserved.</p>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 };

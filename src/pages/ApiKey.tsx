@@ -6,9 +6,10 @@ import { Card } from "@/components/ui/card";
 import { StatCard } from "@/components/StatCard";
 import { Copy, RefreshCw, Key, Activity, TrendingUp, Clock } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import Header from "@/components/Header";
 
 const ApiKey = () => {
-  const [apiKey, setApiKey] = useState(process.env.NEXT_PUBLIC_STRIPE_KEY || "");
+  const [apiKey, setApiKey] = useState(import.meta.env.VITE_FIREBASE_API_KEY || "");
   const { toast } = useToast();
 
   const handleCopyKey = () => {
@@ -20,7 +21,8 @@ const ApiKey = () => {
   };
 
   const handleRegenerateKey = () => {
-    const newKey = `sk_live_${Math.random().toString(36).substring(2, 15)}${Math.random().toString(36).substring(2, 15)}`;
+    // This is a mock regeneration. In a real app, you would make an API call to your backend.
+    const newKey = `AIzaSy${Math.random().toString(36).substring(2, 15)}${Math.random().toString(36).substring(2, 15)}${Math.random().toString(36).substring(2, 8)}`
     setApiKey(newKey);
     toast({
       title: "API Key regenerated!",
@@ -29,39 +31,11 @@ const ApiKey = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background">
-      {/* Header */}
-      <div className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <div className="container flex h-16 items-center justify-between">
-          <Logo />
-          <div className="flex items-center gap-6">
-            <nav className="flex gap-6">
-              <Link to="/dashboard" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
-                Home
-              </Link>
-              <Link to="/api-key" className="text-sm font-medium text-foreground transition-colors">
-                API
-              </Link>
-              <Link to="/profile" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
-                Profile
-              </Link>
-              <Link to="/faq" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
-                FAQ
-              </Link>
-              <Link to="/contact" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
-                Contact
-              </Link>
-            </nav>
-            
-            <Button variant="outline" asChild>
-              <Link to="/">Logout</Link>
-            </Button>
-          </div>
-        </div>
-      </div>
+    <div className="min-h-screen bg-background flex flex-col">
+      <Header />
 
       {/* Main Content */}
-      <main className="container py-8 space-y-8">
+      <main className="flex-grow container py-8 space-y-8">
         <div>
           <h1 className="text-4xl font-bold mb-2">API Key Management</h1>
           <p className="text-muted-foreground">Manage your API key and monitor usage statistics</p>
@@ -82,7 +56,7 @@ const ApiKey = () => {
                 <div className="flex-1 p-3 bg-muted rounded-md font-mono text-sm break-all">
                   {apiKey}
                 </div>
-                <Button variant="outline" size="icon" onClick={handleCopyKey}>
+                <Button variant="outline" size="icon" onClick={handleCopyKey} disabled={!apiKey}>
                   <Copy className="h-4 w-4" />
                 </Button>
                 <Button variant="outline" size="icon" onClick={handleRegenerateKey}>
@@ -152,6 +126,51 @@ const ApiKey = () => {
           </div>
         </Card>
       </main>
+      
+      {/* Footer */}
+      <footer className="border-t border-border py-12">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+            <div>
+              <Logo className="mb-4" />
+              <p className="text-sm text-muted-foreground">
+                Monitoring greenhouse gas emissions for a sustainable future.
+              </p>
+            </div>
+            
+            <div>
+              <h3 className="font-semibold mb-4">Platform</h3>
+              <ul className="space-y-2 text-sm text-muted-foreground">
+                <li><a href="#features" className="hover:text-primary transition-colors">Features</a></li>
+                <li><Link to="/dashboard" className="hover:text-primary transition-colors">Dashboard</Link></li>
+                <li><Link to="/faq" className="hover:text-primary transition-colors">FAQ</Link></li>
+              </ul>
+            </div>
+            
+            <div>
+              <h3 className="font-semibold mb-4">Resources</h3>
+              <ul className="space-y-2 text-sm text-muted-foreground">
+                <li><a href="#about" className="hover:text-primary transition-colors">About Us</a></li>
+                <li><Link to="/contact" className="hover:text-primary transition-colors">Contact</Link></li>
+                <li><Link to="/donation" className="hover:text-primary transition-colors">Donate</Link></li>
+                <li><Link to="/partners" className="hover:text-primary transition-colors">Partners</Link></li>
+              </ul>
+            </div>
+            
+            <div>
+              <h3 className="font-semibold mb-4">Legal</h3>
+              <ul className="space-y-2 text-sm text-muted-foreground">
+                <li><a href="#" className="hover:text-primary transition-colors">Privacy Policy</a></li>
+                <li><a href="#" className="hover:text-primary transition-colors">Terms of Service</a></li>
+              </ul>
+            </div>
+          </div>
+          
+          <div className="border-t border-border pt-8 text-center text-sm text-muted-foreground">
+            <p>© 2025 SATCAP-CO₂. All rights reserved.</p>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 };

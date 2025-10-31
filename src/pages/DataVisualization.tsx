@@ -10,6 +10,7 @@ import { EmissionsAreaChart } from "@/components/EmissionsAreaChart";
 import { LogOut, User, TrendingUp, Activity, BarChart3, PieChart } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar, ScatterChart, Scatter, ZAxis } from "recharts";
+import Header from "@/components/Header";
 
 const regionData = [
   { region: "North America", CO2: 450, CH4: 2.0, CO: 0.5 },
@@ -41,49 +42,7 @@ const scatterData = [
 const DataVisualization = () => {
   return (
     <div className="min-h-screen bg-background">
-      {/* Header */}
-      <header className="border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50">
-        <div className="container mx-auto px-4 py-4">
-          <div className="flex items-center justify-between">
-            <Logo />
-            
-            <nav className="hidden md:flex items-center gap-6">
-              <Link to="/dashboard" className="text-sm font-medium text-foreground hover:text-primary">
-                Home
-              </Link>
-              <Link to="/data-visualization" className="text-sm font-medium text-primary hover:text-primary/80">
-                Data Visualization
-              </Link>
-              <Link to="/data-download" className="text-sm font-medium text-foreground hover:text-primary">
-                Data Download
-              </Link>
-              <Link to="/api-key" className="text-sm font-medium text-foreground hover:text-primary">
-                API
-              </Link>
-              <Link to="/profile" className="text-sm font-medium text-foreground hover:text-primary">
-                Profile
-              </Link>
-              <Link to="/faq" className="text-sm font-medium text-foreground hover:text-primary">
-                FAQ
-              </Link>
-              <Link to="/contact" className="text-sm font-medium text-foreground hover:text-primary">
-                Contact
-              </Link>
-            </nav>
-
-            <div className="flex items-center gap-2">
-              <Button variant="ghost" size="icon">
-                <User className="h-5 w-5" />
-              </Button>
-              <Link to="/">
-                <Button variant="ghost" size="icon">
-                  <LogOut className="h-5 w-5" />
-                </Button>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </header>
+      <Header />
 
       {/* Main Content */}
       <main className="container mx-auto px-4 py-8">
@@ -233,9 +192,47 @@ const DataVisualization = () => {
       </main>
 
       {/* Footer */}
-      <footer className="border-t border-border mt-12 py-6">
-        <div className="container mx-auto px-4 text-center text-sm text-muted-foreground">
-          <p>© 2025 SATCAP-CO2. All rights reserved.</p>
+      <footer className="border-t border-border py-12">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+            <div>
+              <Logo className="mb-4" />
+              <p className="text-sm text-muted-foreground">
+                Monitoring greenhouse gas emissions for a sustainable future.
+              </p>
+            </div>
+            
+            <div>
+              <h3 className="font-semibold mb-4">Platform</h3>
+              <ul className="space-y-2 text-sm text-muted-foreground">
+                <li><a href="#features" className="hover:text-primary transition-colors">Features</a></li>
+                <li><Link to="/dashboard" className="hover:text-primary transition-colors">Dashboard</Link></li>
+                <li><Link to="/faq" className="hover:text-primary transition-colors">FAQ</Link></li>
+              </ul>
+            </div>
+            
+            <div>
+              <h3 className="font-semibold mb-4">Resources</h3>
+              <ul className="space-y-2 text-sm text-muted-foreground">
+                <li><a href="#about" className="hover:text-primary transition-colors">About Us</a></li>
+                <li><Link to="/contact" className="hover:text-primary transition-colors">Contact</Link></li>
+                <li><Link to="/donation" className="hover:text-primary transition-colors">Donate</Link></li>
+                <li><Link to="/partners" className="hover:text-primary transition-colors">Partners</Link></li>
+              </ul>
+            </div>
+            
+            <div>
+              <h3 className="font-semibold mb-4">Legal</h3>
+              <ul className="space-y-2 text-sm text-muted-foreground">
+                <li><a href="#" className="hover:text-primary transition-colors">Privacy Policy</a></li>
+                <li><a href="#" className="hover:text-primary transition-colors">Terms of Service</a></li>
+              </ul>
+            </div>
+          </div>
+          
+          <div className="border-t border-border pt-8 text-center text-sm text-muted-foreground">
+            <p>© 2025 SATCAP-CO₂. All rights reserved.</p>
+          </div>
         </div>
       </footer>
     </div>
