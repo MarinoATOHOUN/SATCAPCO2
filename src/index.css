@@ -1,0 +1,108 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 142 71% 25%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 142 71% 25%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 142 71% 25%;
+
+    --primary: 142 76% 36%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 142 49% 92%;
+    --secondary-foreground: 142 71% 25%;
+
+    --muted: 142 30% 96%;
+    --muted-foreground: 142 20% 45%;
+
+    --accent: 142 76% 42%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 142 20% 88%;
+    --input: 142 20% 88%;
+    --ring: 142 76% 36%;
+
+    --radius: 0.75rem;
+
+    --chart-1: 142 76% 36%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 142 49% 92%;
+    --chart-5: 142 30% 85%;
+
+    /* Custom tokens for SATCAPCO2 */
+    --green-light: 142 76% 42%;
+    --green-primary: 142 76% 36%;
+    --green-dark: 142 71% 25%;
+    --green-bg: 142 49% 92%;
+    --green-subtle: 142 30% 96%;
+    
+    --co2-color: 0 84% 60%;
+    --ch4-color: 142 76% 36%;
+    --co-color: 217 91% 60%;
+
+    --gradient-earth: linear-gradient(135deg, hsl(197 71% 73%), hsl(142 76% 36%));
+    --shadow-card: 0 4px 6px -1px hsl(142 76% 36% / 0.1), 0 2px 4px -1px hsl(142 76% 36% / 0.06);
+    --shadow-elevated: 0 10px 15px -3px hsl(142 76% 36% / 0.1), 0 4px 6px -2px hsl(142 76% 36% / 0.05);
+  }
+
+  .dark {
+    --background: 142 71% 8%;
+    --foreground: 0 0% 98%;
+
+    --card: 142 50% 10%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 142 50% 10%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 142 76% 42%;
+    --primary-foreground: 142 71% 8%;
+
+    --secondary: 142 30% 18%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 142 30% 18%;
+    --muted-foreground: 142 20% 65%;
+
+    --accent: 142 76% 42%;
+    --accent-foreground: 142 71% 8%;
+
+    --destructive: 0 62.8% 50%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 142 30% 18%;
+    --input: 142 30% 18%;
+    --ring: 142 76% 42%;
+
+    --chart-1: 142 76% 42%;
+    --chart-2: 173 58% 45%;
+    --chart-3: 197 37% 35%;
+    --chart-4: 142 49% 85%;
+    --chart-5: 142 30% 75%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
