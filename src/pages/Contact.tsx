@@ -8,6 +8,7 @@ import { useToast } from "@/hooks/use-toast";
 import Header from "@/components/Header";
 import { Link } from "react-router-dom";
 import { Logo } from "@/components/Logo";
+import CosmoLABHubLogo from '../assets/CosmoLABHubLogoFooter.png';
 
 const Contact = () => {
   const { toast } = useToast();
@@ -168,14 +169,20 @@ const Contact = () => {
             <div>
               <h3 className="font-semibold mb-4">Legal</h3>
               <ul className="space-y-2 text-sm text-muted-foreground">
-                <li><a href="#" className="hover:text-primary transition-colors">Privacy Policy</a></li>
-                <li><a href="#" className="hover:text-primary transition-colors">Terms of Service</a></li>
+                <li><Link to="/privacy-policy" className="hover:text-primary transition-colors">Privacy Policy</Link></li>
+                <li><Link to="/terms-of-service" className="hover:text-primary transition-colors">Terms of Service</Link></li>
               </ul>
             </div>
           </div>
           
           <div className="border-t border-border pt-8 text-center text-sm text-muted-foreground">
             <p>© 2025 SATCAP-CO₂. All rights reserved.</p>
+            <div className="mt-4 flex justify-center items-center">
+                <p className="mr-2">Created by</p>
+                <a href="https://www.cosmolab-hub.com/" target="_blank" rel="noopener noreferrer">
+                    <img src={CosmoLABHubLogo} alt="CosmoLAB Hub Logo" className="h-8" />
+                </a>
+            </div>
           </div>
         </div>
       </footer>

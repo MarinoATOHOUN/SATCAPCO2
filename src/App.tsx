@@ -16,6 +16,8 @@ import DataDownload from "./pages/DataDownload";
 import Donation from "./pages/Donation";
 import Partners from "./pages/Partners";
 import Settings from "./pages/Settings";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import TermsOfService from "./pages/TermsOfService";
 import SatelliteData from "./pages/features/SatelliteData";
 import GlobalMapping from "./pages/features/GlobalMapping";
 import DataAnalytics from "./pages/features/DataAnalytics";
@@ -45,6 +47,8 @@ function App() {
           <Route path="/donation" element={<Donation />} />
           <Route path="/partners" element={<Partners />} />
           <Route path="/settings" element={<Settings />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/terms-of-service" element={<TermsOfService />} />
           <Route path="/features/satellite-data" element={<SatelliteData />} />
           <Route path="/features/global-mapping" element={<GlobalMapping />} />
           <Route path="/features/data-analytics" element={<DataAnalytics />} />

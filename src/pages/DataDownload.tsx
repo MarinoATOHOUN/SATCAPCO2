@@ -10,6 +10,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { LogOut, User, Download, Filter, Calendar } from "lucide-react";
 import { toast } from "sonner";
 import Header from "@/components/Header";
+import CosmoLABHubLogo from '../assets/CosmoLABHubLogoFooter.png';
 
 // Mock data for the table
 const mockData = [
@@ -195,7 +196,7 @@ const DataDownload = () => {
               <h3 className="font-semibold mb-4">Resources</h3>
               <ul className="space-y-2 text-sm text-muted-foreground">
                 <li><a href="#about" className="hover:text-primary transition-colors">About Us</a></li>
-                <li><Link to="/contact" className="hover:text-primary transition-colors">Contact</Link></li>
+                <li><Link to="/contact" className-="hover:text-primary transition-colors">Contact</Link></li>
                 <li><Link to="/donation" className="hover:text-primary transition-colors">Donate</Link></li>
                 <li><Link to="/partners" className="hover:text-primary transition-colors">Partners</Link></li>
               </ul>
@@ -204,14 +205,20 @@ const DataDownload = () => {
             <div>
               <h3 className="font-semibold mb-4">Legal</h3>
               <ul className="space-y-2 text-sm text-muted-foreground">
-                <li><a href="#" className="hover:text-primary transition-colors">Privacy Policy</a></li>
-                <li><a href="#" className="hover:text-primary transition-colors">Terms of Service</a></li>
+                <li><Link to="/privacy-policy" className="hover:text-primary transition-colors">Privacy Policy</Link></li>
+                <li><Link to="/terms-of-service" className="hover:text-primary transition-colors">Terms of Service</Link></li>
               </ul>
             </div>
           </div>
           
           <div className="border-t border-border pt-8 text-center text-sm text-muted-foreground">
             <p>© 2025 SATCAP-CO₂. All rights reserved.</p>
+            <div className="mt-4 flex justify-center items-center">
+                <p className="mr-2">Created by</p>
+                <a href="https://www.cosmolab-hub.com/" target="_blank" rel="noopener noreferrer">
+                    <img src={CosmoLABHubLogo} alt="CosmoLAB Hub Logo" className="h-8" />
+                </a>
+            </div>
           </div>
         </div>
       </footer>

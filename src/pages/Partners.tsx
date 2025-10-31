@@ -22,6 +22,7 @@ import {
   Phone,
   MapPin
 } from "lucide-react";
+import CosmoLABHubLogo from '../assets/CosmoLABHubLogoFooter.png';
 
 const Partners = () => {
   const { toast } = useToast();
@@ -57,7 +58,7 @@ const Partners = () => {
 
     toast({
       title: "Application Submitted!",
-      description: "We'll review your partnership proposal and get back to you soon.",
+      description: "We\'ll review your partnership proposal and get back to you soon.",
     });
 
     setFormData({
@@ -121,7 +122,7 @@ const Partners = () => {
             Partner with SATCAP-CO₂
           </h1>
           <p className="text-xl text-muted-foreground mb-8">
-            Join us in combating climate change through innovative satellite data solutions. Together, we can make a real impact on our planet's future.
+            Join us in combating climate change through innovative satellite data solutions. Together, we can make a real impact on our planet\'s future.
           </p>
         </div>
 
@@ -163,7 +164,7 @@ const Partners = () => {
             </p>
           </div>
           
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-4 gap-8">
             <div className="text-center">
               <div className="inline-flex p-4 rounded-full bg-primary/10 mb-4">
                 <Target className="h-8 w-8 text-primary" />
@@ -191,6 +192,15 @@ const Partners = () => {
               <h3 className="font-semibold text-lg mb-2">Global Network</h3>
               <p className="text-muted-foreground">
                 Join a worldwide community committed to climate action & health
+              </p>
+            </div>
+            <div className="text-center">
+              <div className="inline-flex p-4 rounded-full bg-primary/10 mb-4">
+                <img src={CosmoLABHubLogo} alt="CosmoLAB Hub Logo" className="h-8" />
+              </div>
+              <h3 className="font-semibold text-lg mb-2">Created by CosmoLAB Hub</h3>
+              <p className="text-muted-foreground">
+                A project backed by a team of experts in the field.
               </p>
             </div>
           </div>
@@ -351,7 +361,7 @@ const Partners = () => {
                         id="turnover"
                         placeholder="e.g. 1,000,000"
                         value={formData.turnover}
-                        onChange={(e) => setFormData({ ...formData, turnover: e.target.value })}
+                        onChange={(e) => setFormData({ ...formData, turnover: e.g. target.value })}
                         />
                     </div>
                 </div>
@@ -378,7 +388,7 @@ const Partners = () => {
                   <Label htmlFor="message">Tell us about your interest *</Label>
                   <Textarea
                     id="message"
-                    placeholder="Describe your organization and how you'd like to collaborate..."
+                    placeholder="Describe your organization and how you\'d like to collaborate..."
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     rows={5}
@@ -443,14 +453,20 @@ const Partners = () => {
             <div>
               <h3 className="font-semibold mb-4">Legal</h3>
               <ul className="space-y-2 text-sm text-muted-foreground">
-                <li><a href="#" className="hover:text-primary transition-colors">Privacy Policy</a></li>
-                <li><a href="#" className="hover:text-primary transition-colors">Terms of Service</a></li>
+                <li><Link to="/privacy-policy" className="hover:text-primary transition-colors">Privacy Policy</Link></li>
+                <li><Link to="/terms-of-service" className="hover:text-primary transition-colors">Terms of Service</Link></li>
               </ul>
             </div>
           </div>
           
           <div className="border-t border-border pt-8 text-center text-sm text-muted-foreground">
             <p>© 2025 SATCAP-CO₂. All rights reserved.</p>
+            <div className="mt-4 flex justify-center items-center">
+                <p className="mr-2">Created by</p>
+                <a href="https://www.cosmolab-hub.com/" target="_blank" rel="noopener noreferrer">
+                    <img src={CosmoLABHubLogo} alt="CosmoLAB Hub Logo" className="h-8" />
+                </a>
+            </div>
           </div>
         </div>
       </footer>

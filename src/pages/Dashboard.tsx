@@ -9,6 +9,7 @@ import { Database, CheckCircle2, MapPin, TrendingUp } from "lucide-react";
 import { toast } from "sonner";
 import Header from "@/components/Header";
 import { FilterBar } from "@/components/FilterBar";
+import CosmoLABHubLogo from '../assets/CosmoLABHubLogoFooter.png';
 
 const MapView = lazy(() => import("@/components/MapView").then(module => ({ default: module.MapView })));
 
@@ -63,7 +64,7 @@ const Dashboard = () => {
         {/* Main Title */}
         <div className="bg-green-bg rounded-lg p-6 mb-8">
           <h1 className="text-3xl font-bold text-primary text-center">
-            Global Visualization of CH4 and CO2 Emissions
+            Global Pinpoint Visualization of CO₂ and CH₄ Post-Emissions and Concentration
           </h1>
         </div>
 
@@ -131,14 +132,20 @@ const Dashboard = () => {
             <div>
               <h3 className="font-semibold mb-4">Legal</h3>
               <ul className="space-y-2 text-sm text-muted-foreground">
-                <li><a href="#" className="hover:text-primary transition-colors">Privacy Policy</a></li>
-                <li><a href="#" className="hover:text-primary transition-colors">Terms of Service</a></li>
+                <li><Link to="/privacy-policy" className="hover:text-primary transition-colors">Privacy Policy</Link></li>
+                <li><Link to="/terms-of-service" className="hover:text-primary transition-colors">Terms of Service</Link></li>
               </ul>
             </div>
           </div>
           
           <div className="border-t border-border pt-8 text-center text-sm text-muted-foreground">
             <p>© 2025 SATCAP-CO₂. All rights reserved.</p>
+            <div className="mt-4 flex justify-center items-center">
+                <p className="mr-2">Created by</p>
+                <a href="https://www.cosmolab-hub.com/" target="_blank" rel="noopener noreferrer">
+                    <img src={CosmoLABHubLogo} alt="CosmoLAB Hub Logo" className="h-8" />
+                </a>
+            </div>
           </div>
         </div>
       </footer>
