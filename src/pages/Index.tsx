@@ -1,4 +1,5 @@
-import React from "react";
+
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Logo } from "@/components/Logo";
@@ -11,10 +12,14 @@ import {
   Users, 
   Heart,
   ChevronRight,
-  CheckCircle2
+  CheckCircle2,
+  Menu,
+  X
 } from "lucide-react";
 
 const Index = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
@@ -41,18 +46,53 @@ const Index = () => {
               </Link>
             </nav>
 
-            <div className="flex items-center gap-2">
-              <Link to="/donation">
-                <Button variant="outline" className="gap-2">
-                  <Heart className="h-4 w-4" />
-                  Support Us
-                </Button>
+            <div className="hidden md:flex items-center gap-2">
+              <Link to="/login">
+                <Button variant="outline">Login</Button>
               </Link>
-              <Link to="/">
-                <Button>Login</Button>
+              <Link to="/register">
+                <Button>Sign Up</Button>
               </Link>
             </div>
+
+            <div className="md:hidden">
+              <Button variant="ghost" size="icon" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+                {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              </Button>
+            </div>
           </div>
+
+          {/* Mobile Menu */}
+          {isMenuOpen && (
+            <div className="md:hidden mt-4">
+              <nav className="flex flex-col gap-4">
+                <a href="#features" className="text-sm font-medium text-foreground hover:text-primary transition-colors" onClick={() => setIsMenuOpen(false)}>
+                  Features
+                </a>
+                <a href="#about" className="text-sm font-medium text-foreground hover:text-primary transition-colors" onClick={() => setIsMenuOpen(false)}>
+                  About
+                </a>
+                <Link to="/donation" className="text-sm font-medium text-foreground hover:text-primary transition-colors" onClick={() => setIsMenuOpen(false)}>
+                  Donate
+                </Link>
+                <Link to="/contact" className="text-sm font-medium text-foreground hover:text-primary transition-colors" onClick={() => setIsMenuOpen(false)}>
+                  Contact
+                </Link>
+                <Link to="/partners" className="text-sm font-medium text-foreground hover:text-primary transition-colors" onClick={() => setIsMenuOpen(false)}>
+                  Partners
+                </Link>
+                <div className="border-t border-border my-2"></div>
+                <div className="flex flex-col gap-2">
+                    <Link to="/login">
+                        <Button variant="outline" className="w-full">Login</Button>
+                    </Link>
+                    <Link to="/register">
+                        <Button className="w-full">Sign Up</Button>
+                    </Link>
+                </div>
+              </nav>
+            </div>
+          )}
         </div>
       </header>
 
@@ -83,7 +123,7 @@ const Index = () => {
             </p>
             
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in">
-              <Link to="/">
+              <Link to="/register">
                 <Button size="lg" className="gap-2">
                   Get Started
                   <ChevronRight className="h-4 w-4" />
@@ -275,7 +315,7 @@ const Index = () => {
             and contribute to a sustainable future.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link to="/">
+            <Link to="/register">
               <Button size="lg" variant="secondary" className="gap-2">
                 Get Started Free
                 <ChevronRight className="h-4 w-4" />
@@ -306,7 +346,7 @@ const Index = () => {
               <h3 className="font-semibold mb-4">Platform</h3>
               <ul className="space-y-2 text-sm text-muted-foreground">
                 <li><a href="#features" className="hover:text-primary transition-colors">Features</a></li>
-                <li><Link to="/" className="hover:text-primary transition-colors">Dashboard</Link></li>
+                <li><Link to="/dashboard" className="hover:text-primary transition-colors">Dashboard</Link></li>
                 <li><Link to="/faq" className="hover:text-primary transition-colors">FAQ</Link></li>
               </ul>
             </div>
