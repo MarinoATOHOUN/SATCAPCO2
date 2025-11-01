@@ -1,17 +1,20 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { User, Mail, MapPin, Calendar, Shield } from "lucide-react";
+import { User, Mail, MapPin, Calendar, Shield, Briefcase, Building } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Logo } from "@/components/Logo";
 import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 const Profile = () => {
   // Mock user data - replace with actual auth later
   const user = {
     name: "John Doe",
     email: "john.doe@example.com",
+    title: "Dr.",
+    organization: "Example Corp",
+    position: "Lead Scientist",
     role: "Environmental Manager",
     location: "Paris, France",
     joinDate: "January 2024",
@@ -43,7 +46,7 @@ const Profile = () => {
                     </AvatarFallback>
                   </Avatar>
                   
-                  <div className="flex-1 space-y-4">
+                  <div className="flex-1 grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4">
                     <div className="flex items-center gap-3">
                       <User className="h-5 w-5 text-muted-foreground" />
                       <div>
@@ -51,12 +54,36 @@ const Profile = () => {
                         <p className="font-medium">{user.name}</p>
                       </div>
                     </div>
-                    
+
                     <div className="flex items-center gap-3">
                       <Mail className="h-5 w-5 text-muted-foreground" />
                       <div>
                         <p className="text-sm text-muted-foreground">Email</p>
                         <p className="font-medium">{user.email}</p>
+                      </div>
+                    </div>
+
+                    <div className="flex items-center gap-3">
+                      <User className="h-5 w-5 text-muted-foreground" />
+                      <div>
+                        <p className="text-sm text-muted-foreground">Title</p>
+                        <p className="font-medium">{user.title}</p>
+                      </div>
+                    </div>
+                    
+                    <div className="flex items-center gap-3">
+                      <Building className="h-5 w-5 text-muted-foreground" />
+                      <div>
+                        <p className="text-sm text-muted-foreground">Organization</p>
+                        <p className="font-medium">{user.organization}</p>
+                      </div>
+                    </div>
+                    
+                    <div className="flex items-center gap-3">
+                      <Briefcase className="h-5 w-5 text-muted-foreground" />
+                      <div>
+                        <p className="text-sm text-muted-foreground">Position</p>
+                        <p className="font-medium">{user.position}</p>
                       </div>
                     </div>
                     
@@ -87,7 +114,9 @@ const Profile = () => {
                 </div>
                 
                 <div className="mt-6 pt-6 border-t">
-                  <Button className="w-full sm:w-auto">Edit Profile</Button>
+                  <Link to="/settings">
+                    <Button className="w-full sm:w-auto">Edit Profile</Button>
+                  </Link>
                 </div>
               </CardContent>
             </Card>
@@ -118,49 +147,7 @@ const Profile = () => {
         </div>
       </main>
       
-      <footer className="border-t border-border py-12">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-            <div>
-              <Logo className="mb-4" />
-              <p className="text-sm text-muted-foreground">
-                Monitoring greenhouse gas emissions for a sustainable future.
-              </p>
-            </div>
-            
-            <div>
-              <h3 className="font-semibold mb-4">Platform</h3>
-              <ul className="space-y-2 text-sm text-muted-foreground">
-                <li><a href="#features" className="hover:text-primary transition-colors">Features</a></li>
-                <li><Link to="/dashboard" className="hover:text-primary transition-colors">Dashboard</Link></li>
-                <li><Link to="/faq" className="hover:text-primary transition-colors">FAQ</Link></li>
-              </ul>
-            </div>
-            
-            <div>
-              <h3 className="font-semibold mb-4">Resources</h3>
-              <ul className="space-y-2 text-sm text-muted-foreground">
-                <li><a href="#about" className="hover:text-primary transition-colors">About Us</a></li>
-                <li><Link to="/contact" className="hover:text-primary transition-colors">Contact</Link></li>
-                <li><Link to="/donation" className="hover:text-primary transition-colors">Donate</Link></li>
-                <li><Link to="/partners" className="hover:text-primary transition-colors">Partners</Link></li>
-              </ul>
-            </div>
-            
-            <div>
-              <h3 className="font-semibold mb-4">Legal</h3>
-              <ul className="space-y-2 text-sm text-muted-foreground">
-                <li><Link to="/privacy-policy" className="hover:text-primary transition-colors">Privacy Policy</Link></li>
-                <li><Link to="/terms-of-service" className="hover:text-primary transition-colors">Terms of Service</Link></li>
-              </ul>
-            </div>
-          </div>
-          
-          <div className="border-t border-border pt-8 text-center text-sm text-muted-foreground">
-            <p>© 2025 SATCAP-CO₂. All rights reserved.</p>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 };

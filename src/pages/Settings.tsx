@@ -21,7 +21,8 @@ import {
   ArrowLeft,
   Shield,
   Eye,
-  EyeOff
+  EyeOff,
+  Briefcase
 } from "lucide-react";
 
 const Settings = () => {
@@ -32,9 +33,11 @@ const Settings = () => {
     firstName: "John",
     lastName: "Doe",
     email: "john.doe@example.com",
+    title: "Dr.",
+    organization: "Example Corp",
+    position: "Lead Scientist",
+    role: "Environmental Manager",
     phone: "+1 234 567 8900",
-    company: "Research Institute",
-    position: "Climate Scientist"
   });
 
   const [notifications, setNotifications] = useState({
@@ -103,10 +106,10 @@ const Settings = () => {
 
       <div className="container py-8 md:py-12">
         {/* Back Button */}
-        <Link to="/dashboard">
+        <Link to="/profile">
           <Button variant="ghost" className="mb-6 gap-2">
             <ArrowLeft className="h-4 w-4" />
-            Back to Dashboard
+            Back to Profile
           </Button>
         </Link>
 
@@ -171,7 +174,7 @@ const Settings = () => {
 
                   <div className="space-y-2">
                     <Label htmlFor="email">Email</Label>
-                    <div className="flex gap-2">
+                    <div className="flex gap-2 items-center">
                       <Mail className="h-10 w-10 p-2 rounded-md bg-muted flex-shrink-0" />
                       <Input
                         id="email"
@@ -183,30 +186,25 @@ const Settings = () => {
                     </div>
                   </div>
 
-                  <div className="space-y-2">
-                    <Label htmlFor="phone">Phone Number</Label>
-                    <div className="flex gap-2">
-                      <Phone className="h-10 w-10 p-2 rounded-md bg-muted flex-shrink-0" />
-                      <Input
-                        id="phone"
-                        type="tel"
-                        value={profileData.phone}
-                        onChange={(e) => setProfileData({ ...profileData, phone: e.target.value })}
-                        className="flex-1"
-                      />
-                    </div>
-                  </div>
-
                   <Separator />
 
                   <div className="space-y-2">
-                    <Label htmlFor="company">Company/Organization</Label>
-                    <div className="flex gap-2">
+                    <Label htmlFor="title">Title</Label>
+                    <Input
+                      id="title"
+                      value={profileData.title}
+                      onChange={(e) => setProfileData({ ...profileData, title: e.target.value })}
+                    />
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label htmlFor="organization">Organization Name</Label>
+                    <div className="flex gap-2 items-center">
                       <Building2 className="h-10 w-10 p-2 rounded-md bg-muted flex-shrink-0" />
                       <Input
-                        id="company"
-                        value={profileData.company}
-                        onChange={(e) => setProfileData({ ...profileData, company: e.target.value })}
+                        id="organization"
+                        value={profileData.organization}
+                        onChange={(e) => setProfileData({ ...profileData, organization: e.target.value })}
                         className="flex-1"
                       />
                     </div>
@@ -214,11 +212,26 @@ const Settings = () => {
 
                   <div className="space-y-2">
                     <Label htmlFor="position">Position</Label>
-                    <Input
-                      id="position"
-                      value={profileData.position}
-                      onChange={(e) => setProfileData({ ...profileData, position: e.target.value })}
-                    />
+                     <div className="flex gap-2 items-center">
+                        <Briefcase className="h-10 w-10 p-2 rounded-md bg-muted flex-shrink-0" />
+                        <Input
+                          id="position"
+                          value={profileData.position}
+                          onChange={(e) => setProfileData({ ...profileData, position: e.target.value })}
+                        />
+                     </div>
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label htmlFor="role">Role</Label>
+                     <div className="flex gap-2 items-center">
+                        <Shield className="h-10 w-10 p-2 rounded-md bg-muted flex-shrink-0" />
+                        <Input
+                          id="role"
+                          value={profileData.role}
+                          onChange={(e) => setProfileData({ ...profileData, role: e.target.value })}
+                        />
+                     </div>
                   </div>
 
                   <Button type="submit" className="gap-2">

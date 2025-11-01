@@ -16,6 +16,7 @@ import DataDownload from "./pages/DataDownload";
 import Donation from "./pages/Donation";
 import Partners from "./pages/Partners";
 import Settings from "./pages/Settings";
+import Parametres from "./pages/Parametres";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfService from "./pages/TermsOfService";
 import SatelliteData from "./pages/features/SatelliteData";
@@ -25,6 +26,20 @@ import TrendAnalysis from "./pages/features/TrendAnalysis";
 import ApiAccess from "./pages/features/ApiAccess";
 import CarbonMarket from "./pages/features/CarbonMarket";
 import ClimateHealth from "./pages/features/ClimateHealth";
+import SecurityPrivacy from "./pages/SecurityPrivacy";
+import TrustTransparency from "./pages/TrustTransparency";
+import ApiPlatform from "./pages/ApiPlatform";
+import ApiDocumentation from "./pages/ApiDocumentation";
+import Pricing from "./pages/Pricing";
+import CustomerStories from "./pages/CustomerStories";
+import OurMission from "./pages/OurMission";
+import OurTeam from "./pages/OurTeam";
+import OurRoadmap from "./pages/OurRoadmap";
+import Careers from "./pages/Careers";
+import Blog from "./pages/Blog";
+import Press from "./pages/Press";
+import Status from "./pages/Status";
+import Documentation from "./pages/Documentation";
 
 const queryClient = new QueryClient();
 
@@ -48,6 +63,7 @@ function App() {
           <Route path="/donation" element={<Donation />} />
           <Route path="/partners" element={<Partners />} />
           <Route path="/settings" element={<Settings />} />
+          <Route path="/parametres" element={<Parametres />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/terms-of-service" element={<TermsOfService />} />
           <Route path="/features/satellite-data" element={<SatelliteData />} />
@@ -57,6 +73,20 @@ function App() {
           <Route path="/features/api-access" element={<ApiAccess />} />
           <Route path="/features/carbon-market" element={<CarbonMarket />} />
           <Route path="/features/climate-health" element={<ClimateHealth />} />
+          <Route path="/security-privacy" element={<SecurityPrivacy />} />
+          <Route path="/trust-transparency" element={<TrustTransparency />} />
+          <Route path="/api-platform" element={<ApiPlatform />} />
+          <Route path="/api-documentation" element={<ApiDocumentation />} />
+          <Route path="/pricing" element={<Pricing />} />
+          <Route path="/customer-stories" element={<CustomerStories />} />
+          <Route path="/our-mission" element={<OurMission />} />
+          <Route path="/our-team" element={<OurTeam />} />
+          <Route path="/our-roadmap" element={<OurRoadmap />} />
+          <Route path="/careers" element={<Careers />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/press" element={<Press />} />
+          <Route path="/status" element={<Status />} />
+          <Route path="/documentation" element={<Documentation />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

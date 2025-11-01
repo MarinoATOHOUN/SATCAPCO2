@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Logo } from "@/components/Logo";
 import { Card } from "@/components/ui/card";
 import Header from "@/components/Header";
+import Footer from "@/components/Footer"; // Import the new Footer component
 import { 
   Globe2, 
   Satellite, 
@@ -15,7 +15,6 @@ import {
   CheckCircle2,
   HeartPulse
 } from "lucide-react";
-import CosmoLABHubLogo from '../assets/CosmoLABHubLogoFooter.png';
 
 const Index = () => {
   return (
@@ -270,56 +269,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="border-t border-border py-12">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-            <div>
-              <Logo className="mb-4" />
-              <p className="text-sm text-muted-foreground">
-                Monitoring greenhouse gas emissions for a sustainable future.
-              </p>
-            </div>
-            
-            <div>
-              <h3 className="font-semibold mb-4">Platform</h3>
-              <ul className="space-y-2 text-sm text-muted-foreground">
-                <li><a href="#features" className="hover:text-primary transition-colors">Features</a></li>
-                <li><Link to="/dashboard" className="hover:text-primary transition-colors">Dashboard</Link></li>
-                <li><Link to="/faq" className="hover:text-primary transition-colors">FAQ</Link></li>
-              </ul>
-            </div>
-            
-            <div>
-              <h3 className="font-semibold mb-4">Resources</h3>
-              <ul className="space-y-2 text-sm text-muted-foreground">
-                <li><a href="#about" className="hover:text-primary transition-colors">About Us</a></li>
-                <li><Link to="/contact" className="hover:text-primary transition-colors">Contact</Link></li>
-                <li><Link to="/donation" className="hover:text-primary transition-colors">Donate</Link></li>
-                <li><Link to="/partners" className="hover:text-primary transition-colors">Partners</Link></li>
-              </ul>
-            </div>
-            
-            <div>
-              <h3 className="font-semibold mb-4">Legal</h3>
-              <ul className="space-y-2 text-sm text-muted-foreground">
-                <li><Link to="/privacy-policy" className="hover:text-primary transition-colors">Privacy Policy</Link></li>
-                <li><Link to="/terms-of-service" className="hover:text-primary transition-colors">Terms of Service</Link></li>
-              </ul>
-            </div>
-          </div>
-          
-          <div className="border-t border-border pt-8 text-center text-sm text-muted-foreground">
-            <p>© 2025 SATCAP-CO₂. All rights reserved.</p>
-            <div className="mt-4 flex justify-center items-center">
-                <p className="mr-2">Created by</p>
-                <a href="https://www.cosmolabhub.space" target="_blank" rel="noopener noreferrer">
-                    <img src={CosmoLABHubLogo} alt="CosmoLAB Hub Logo" className="h-8" />
-                </a>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 };
