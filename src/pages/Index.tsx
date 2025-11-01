@@ -12,9 +12,10 @@ import {
   Users, 
   Heart,
   ChevronRight,
-  CheckCircle2
+  CheckCircle2,
+  HeartPulse
 } from "lucide-react";
-import CosmoLABHubLogo from '../assets/CosmoLABHubLogo.png';
+import CosmoLABHubLogo from '../assets/CosmoLABHubLogoFooter.png';
 
 const Index = () => {
   return (
@@ -167,6 +168,19 @@ const Index = () => {
                 </p>
               </Card>
             </Link>
+            <div className="md:col-span-2 lg:col-span-3 flex justify-center">
+              <Link to="/features/climate-health" className="w-full max-w-sm">
+                <Card className="p-6 hover:shadow-elevated transition-shadow h-full">
+                  <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
+                    <HeartPulse className="h-6 w-6 text-primary" />
+                  </div>
+                  <h3 className="text-xl font-semibold mb-2">Climate-Related Health Risks</h3>
+                  <p className="text-muted-foreground">
+                    Forecast and give real-time alerts to local communities on high peak GHG exposure and the mixed air quality/pollution/heat consequences on health.
+                  </p>
+                </Card>
+              </Link>
+            </div>
           </div>
         </div>
       </section>
@@ -299,7 +313,7 @@ const Index = () => {
             <p>© 2025 SATCAP-CO₂. All rights reserved.</p>
             <div className="mt-4 flex justify-center items-center">
                 <p className="mr-2">Created by</p>
-                <a href="https://www.cosmolab-hub.com/" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.cosmolabhub.space" target="_blank" rel="noopener noreferrer">
                     <img src={CosmoLABHubLogo} alt="CosmoLAB Hub Logo" className="h-8" />
                 </a>
             </div>

@@ -142,7 +142,7 @@ const Dashboard = () => {
             <p>© 2025 SATCAP-CO₂. All rights reserved.</p>
             <div className="mt-4 flex justify-center items-center">
                 <p className="mr-2">Created by</p>
-                <a href="https://www.cosmolab-hub.com/" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.cosmolabhub.space" target="_blank" rel="noopener noreferrer">
                     <img src={CosmoLABHubLogo} alt="CosmoLAB Hub Logo" className="h-8" />
                 </a>
             </div>

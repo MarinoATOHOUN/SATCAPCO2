@@ -23,7 +23,7 @@ const Contact = () => {
       setIsSubmitting(false);
       toast({
         title: "Message sent!",
-        description: "We\'ll get back to you as soon as possible.",
+        description: "We'll get back to you as soon as possible.",
       });
       (e.target as HTMLFormElement).reset();
     }, 1000);
@@ -40,7 +40,7 @@ const Contact = () => {
               Get in Touch
             </h1>
             <p className="text-muted-foreground text-lg">
-              Have a question or need support? We\'re here to help.
+              Have a question or need support? We're here to help.
             </p>
           </div>
 
@@ -89,7 +89,7 @@ const Contact = () => {
             <CardHeader>
               <CardTitle>Send us a Message</CardTitle>
               <CardDescription>
-                Fill out the form below and we\'ll get back to you within 24 hours
+                Fill out the form below and we'll get back to you within 24 hours
               </CardDescription>
             </CardHeader>
             <CardContent>
@@ -179,7 +179,7 @@ const Contact = () => {
             <p>© 2025 SATCAP-CO₂. All rights reserved.</p>
             <div className="mt-4 flex justify-center items-center">
                 <p className="mr-2">Created by</p>
-                <a href="https://www.cosmolab-hub.com/" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.cosmolabhub.space" target="_blank" rel="noopener noreferrer">
                     <img src={CosmoLABHubLogo} alt="CosmoLAB Hub Logo" className="h-8" />
                 </a>
             </div>

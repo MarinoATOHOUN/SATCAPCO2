@@ -24,6 +24,7 @@ import DataAnalytics from "./pages/features/DataAnalytics";
 import TrendAnalysis from "./pages/features/TrendAnalysis";
 import ApiAccess from "./pages/features/ApiAccess";
 import CarbonMarket from "./pages/features/CarbonMarket";
+import ClimateHealth from "./pages/features/ClimateHealth";
 
 const queryClient = new QueryClient();
 
@@ -55,6 +56,7 @@ function App() {
           <Route path="/features/trend-analysis" element={<TrendAnalysis />} />
           <Route path="/features/api-access" element={<ApiAccess />} />
           <Route path="/features/carbon-market" element={<CarbonMarket />} />
+          <Route path="/features/climate-health" element={<ClimateHealth />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
