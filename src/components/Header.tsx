@@ -1,171 +1,130 @@
 import React, { useState, useEffect } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import { Button } from "@/components/ui/button";
-import { Logo } from "@/components/Logo";
-import { LogOut, User, Menu, X } from "lucide-react";
-import {
-  Sheet,
-  SheetContent,
-  SheetTrigger,
-  SheetClose,
-} from "@/components/ui/sheet";
-import { toast } from "sonner";
+import { Link, useNavigate } from "react-router-dom";
+import { Logo } from "./Logo";
+import { Button } from "./ui/button";
+import { 
+  Menu, 
+  X, 
+  User, 
+  LogOut, 
+  LayoutDashboard, 
+  BarChart2, 
+  Download, 
+  Key, 
+  HelpCircle, 
+  Heart, 
+  Mail, 
+  Users2 
+} from "lucide-react";
 
 const Header = () => {
+  const [isOpen, setIsOpen] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const location = useLocation();
   const navigate = useNavigate();
 
   useEffect(() => {
+    // Check authentication status from localStorage on component mount
     const authStatus = localStorage.getItem("isAuthenticated") === "true";
     setIsAuthenticated(authStatus);
-  }, [location.pathname]);
+  }, []);
 
   const handleLogout = () => {
     localStorage.removeItem("isAuthenticated");
-    toast.success("Logged out successfully");
     setIsAuthenticated(false);
     navigate("/");
   };
 
-  const loggedOutLinks = [
-    { href: "/#features", label: "Features" },
-    { href: "/#about", label: "About" },
-    { href: "/donation", label: "Donate" },
-    { href: "/contact", label: "Contact" },
-    { href: "/partners", label: "Partners" },
-  ];
-
   const loggedInLinks = [
-    { href: "/dashboard", label: "Dashboard" },
-    { href: "/data-visualization", label: "Data Visualization" },
-    { href: "/data-download", label: "Data Download" },
-    { href: "/api-key", label: "API" },
-    { href: "/profile", label: "Profile" },
-    { href: "/faq", label: "FAQ" },
+    { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
+    { href: "/data-visualization", label: "Data Visualization", icon: BarChart2 },
+    { href: "/data-download", label: "Data Download", icon: Download },
+    { href: "/api-key", label: "API", icon: Key },
+    { href: "/profile", label: "Profile", icon: User },
+    { href: "/faq", label: "FAQ", icon: HelpCircle },
+    { href: "/donation", label: "Donate", icon: Heart },
+    { href: "/contact", label: "Contact", icon: Mail },
+    { href: "/partners", label: "Partners", icon: Users2 },
+  ];
+
+  const loggedOutLinks = [
+    { href: "#features", label: "Features" },
+    { href: "#about", label: "About" },
     { href: "/donation", label: "Donate" },
     { href: "/contact", label: "Contact" },
     { href: "/partners", label: "Partners" },
+    { href: "/faq", label: "FAQ" },
   ];
-
-  const navLinks = isAuthenticated ? loggedInLinks : loggedOutLinks;
-
-  const isActive = (path: string) => {
-    if (path.startsWith("/#")) {
-      // For hash links, we need a more specific check if we want to highlight them
-      // This implementation just checks the main path
-      return location.pathname === "/" && location.hash === path.substring(1);
-    }
-    return location.pathname === path;
-  };
-
-  const NavLinkContent = ({ href, label }: { href: string; label: string }) => {
-    const commonClasses = "text-sm font-medium transition-colors";
-    const activeClass = "text-primary";
-    const inactiveClass = "text-foreground hover:text-primary";
-    
-    if (href.startsWith("/#")) {
-      return (
-        <a href={href} className={`${commonClasses} ${isActive(href) ? activeClass : inactiveClass}`}>
-          {label}
-        </a>
-      );
-    }
-    
-    return (
-      <Link to={href} className={`${commonClasses} ${isActive(href) ? activeClass : inactiveClass}`}>
-        {label}
-      </Link>
-    );
-  };
-  
-  const MobileNavLinkContent = ({ href, label }: { href: string; label: string }) => {
-    const commonClasses = "flex items-center w-full p-3 rounded-md text-base font-medium";
-    const activeClass = "bg-primary text-primary-foreground";
-    const inactiveClass = "hover:bg-accent";
-
-    if (href.startsWith("/#")) {
-      return (
-        <SheetClose asChild>
-          <a href={href} className={`${commonClasses} ${isActive(href) ? activeClass : inactiveClass}`}>
-            {label}
-          </a>
-        </SheetClose>
-      );
-    }
-
-    return (
-      <SheetClose asChild>
-        <Link to={href} className={`${commonClasses} ${isActive(href) ? activeClass : inactiveClass}`}>
-          {label}
-        </Link>
-      </SheetClose>
-    );
-  };
 
   return (
-    <header className="border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50">
-      <div className="container mx-auto px-4 py-4">
-        <div className="flex items-center justify-between">
-          <Logo />
-          
-          <nav className="hidden md:flex items-center gap-6">
-            {navLinks.map((link) => (
-              <NavLinkContent key={link.href} href={link.href} label={link.label} />
+    <header className="bg-background/80 backdrop-blur-sm sticky top-0 z-50 border-b">
+      <div className="container mx-auto px-4">
+        <div className="flex items-center justify-between h-16">
+          <Link to="/">
+            <Logo />
+          </Link>
+
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex items-center gap-6 text-sm font-medium">
+            {(isAuthenticated ? loggedInLinks.map(l => ({...l, href: l.href || "#"})) : loggedOutLinks).map((link) => (
+              <Link
+                key={link.label}
+                to={link.href}
+                className="text-muted-foreground hover:text-primary transition-colors"
+              >
+                {link.label}
+              </Link>
             ))}
           </nav>
 
-          <div className="flex items-center gap-2">
-            {/* Mobile Navigation */}
+          <div className="flex items-center gap-4">
+            {/* Mobile Menu Button */}
             <div className="md:hidden">
-              <Sheet>
-                <SheetTrigger asChild>
-                  <Button variant="ghost" size="icon">
-                    <Menu className="h-6 w-6" />
-                  </Button>
-                </SheetTrigger>
-                <SheetContent side="right" className="w-full max-w-xs">
-                  <div className="flex flex-col h-full">
-                    <div className="flex justify-between items-center mb-6 px-4 py-2 border-b">
-                      <Logo />
-                      <SheetClose asChild>
-                        <Button variant="ghost" size="icon">
-                          <X className="h-6 w-6" />
-                        </Button>
-                      </SheetClose>
-                    </div>
-                    
-                    <nav className="flex-grow px-4 space-y-2">
-                      {navLinks.map((link) => (
-                        <MobileNavLinkContent key={link.href} href={link.href} label={link.label} />
-                      ))}
-                    </nav>
-
-                    <div className="border-t mt-auto p-4 space-y-2">
-                      {isAuthenticated ? (
-                        <>
-                          <SheetClose asChild>
-                            <Link to="/profile" className="w-full">
-                              <Button variant="outline" className="w-full justify-start gap-2">
-                                <User className="h-5 w-5" /> Profile
-                              </Button>
-                            </Link>
-                          </SheetClose>
-                          <Button variant="outline" className="w-full justify-start gap-2" onClick={handleLogout}>
-                            <LogOut className="h-5 w-5" /> Logout
-                          </Button>
-                        </>
-                      ) : (
-                        <div className="grid grid-cols-2 gap-2">
-                          <Button asChild><Link to="/login">Login</Link></Button>
-                          <Button variant="secondary" asChild><Link to="/login">Sign Up</Link></Button>
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                </SheetContent>
-              </Sheet>
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={() => setIsOpen(!isOpen)}
+                aria-label="Toggle menu"
+              >
+                {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+              </Button>
             </div>
+
+            {/* Mobile Menu (Overlay) */}
+            {isOpen && (
+              <div className="md:hidden fixed inset-0 bg-background/95 z-40 animate-fade-in-down">
+                <div className="flex flex-col items-center justify-center h-full space-y-6">
+                  {(isAuthenticated ? loggedInLinks : loggedOutLinks).map((link) => (
+                    <Link
+                      key={link.label}
+                      to={link.href}
+                      className="text-2xl font-semibold text-muted-foreground hover:text-primary transition-colors"
+                      onClick={() => setIsOpen(false)}
+                    >
+                      <div className="flex items-center gap-2">
+                        {link.icon && <link.icon className="h-5 w-5" />}
+                        {link.label}
+                      </div>
+                    </Link>
+                  ))}
+                  <hr className="w-1/2 border-border"/>
+                  {isAuthenticated ? (
+                    <Button variant="ghost" onClick={() => { handleLogout(); setIsOpen(false); }} className="text-2xl font-semibold flex items-center gap-2">
+                      <LogOut className="h-5 w-5" />
+                      Logout
+                    </Button>
+                  ) : (
+                    <div className="flex flex-col gap-4 w-full px-8">
+                      <Button asChild size="lg">
+                        <Link to="/login" onClick={() => setIsOpen(false)}>Login</Link>
+                      </Button>
+                      <Button asChild variant="secondary" size="lg">
+                        <Link to="/login" onClick={() => setIsOpen(false)}>Sign Up</Link>
+                      </Button>
+                    </div>
+                  )}
+                </div>
+              </div>
+            )}
 
             {/* Desktop Auth Buttons */}
             <div className="hidden md:flex items-center gap-2">
