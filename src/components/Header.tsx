@@ -23,16 +23,29 @@ const Header = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Check authentication status from localStorage on component mount
     const authStatus = localStorage.getItem("isAuthenticated") === "true";
     setIsAuthenticated(authStatus);
   }, []);
 
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isOpen]);
+
   const handleLogout = () => {
     localStorage.removeItem("isAuthenticated");
     setIsAuthenticated(false);
+    setIsOpen(false);
     navigate("/");
   };
+
+  const closeMenu = () => setIsOpen(false);
 
   const loggedInLinks = [
     { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
@@ -59,12 +72,10 @@ const Header = () => {
     <header className="bg-background/80 backdrop-blur-sm sticky top-0 z-50 border-b">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
-          <Link to="/">
-            <Logo />
-          </Link>
+          <Logo />
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-6 text-sm font-medium">
+          <nav className="hidden lg:flex items-center gap-6 text-sm font-medium">
             {(isAuthenticated ? loggedInLinks.map(l => ({...l, href: l.href || "#"})) : loggedOutLinks).map((link) => (
               <Link
                 key={link.label}
@@ -78,56 +89,73 @@ const Header = () => {
 
           <div className="flex items-center gap-4">
             {/* Mobile Menu Button */}
-            <div className="md:hidden">
+            <div className="lg:hidden">
               <Button
                 variant="ghost"
                 size="icon"
                 onClick={() => setIsOpen(!isOpen)}
                 aria-label="Toggle menu"
               >
-                {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+                <Menu className="h-5 w-5" />
               </Button>
             </div>
 
-            {/* Mobile Menu (Overlay) */}
-            {isOpen && (
-              <div className="md:hidden fixed inset-0 bg-background/95 z-40 animate-fade-in-down">
-                <div className="flex flex-col items-center justify-center h-full space-y-6">
-                  {(isAuthenticated ? loggedInLinks : loggedOutLinks).map((link) => (
-                    <Link
-                      key={link.label}
-                      to={link.href}
-                      className="text-2xl font-semibold text-muted-foreground hover:text-primary transition-colors"
-                      onClick={() => setIsOpen(false)}
-                    >
-                      <div className="flex items-center gap-2">
-                        {link.icon && <link.icon className="h-5 w-5" />}
-                        {link.label}
-                      </div>
-                    </Link>
-                  ))}
-                  <hr className="w-1/2 border-border"/>
-                  {isAuthenticated ? (
-                    <Button variant="ghost" onClick={() => { handleLogout(); setIsOpen(false); }} className="text-2xl font-semibold flex items-center gap-2">
-                      <LogOut className="h-5 w-5" />
-                      Logout
+            {/* Mobile Menu (Drawer) */}
+            <div
+              className={`lg:hidden fixed inset-0 z-40 transition-opacity duration-300 ${isOpen ? "opacity-100" : "opacity-0 pointer-events-none"}`}
+            >
+              {/* Backdrop */}
+              <div className="absolute inset-0 bg-black/50" onClick={closeMenu}></div>
+
+              {/* Menu Content */}
+              <div className={`fixed top-0 right-0 h-full w-4/5 max-w-xs bg-background shadow-lg transition-transform duration-300 ease-in-out ${isOpen ? 'transform-none' : 'translate-x-full'}`}>
+                <div className="flex flex-col h-full">
+                  <div className="flex items-center justify-between p-4 border-b">
+                    <span className="font-semibold">Menu</span>
+                    <Button variant="ghost" size="icon" onClick={closeMenu} aria-label="Close menu">
+                      <X className="h-5 w-5" />
                     </Button>
-                  ) : (
-                    <div className="flex flex-col gap-4 w-full px-8">
-                      <Button asChild size="lg">
-                        <Link to="/login" onClick={() => setIsOpen(false)}>Login</Link>
+                  </div>
+                  <div className="flex-1 overflow-y-auto flex flex-col justify-center">
+                    <nav className="p-4">
+                      <div className="space-y-4">
+                        {(isAuthenticated ? loggedInLinks : loggedOutLinks).map((link, index) => (
+                          <Link
+                            key={`${link.label}-${index}`}
+                            to={link.href}
+                            className="flex items-center gap-3 p-3 rounded-md text-lg font-semibold text-muted-foreground hover:text-primary hover:bg-muted transition-colors"
+                            onClick={closeMenu}
+                          >
+                            {link.icon && <link.icon className="h-5 w-5" />}
+                            <span className="font-medium">{link.label}</span>
+                          </Link>
+                        ))}
+                      </div>
+                    </nav>
+                  </div>
+                  <div className="p-4 border-t">
+                    {isAuthenticated ? (
+                      <Button variant="outline" onClick={handleLogout} className="w-full flex items-center gap-2">
+                        <LogOut className="h-5 w-5" />
+                        Logout
                       </Button>
-                      <Button asChild variant="secondary" size="lg">
-                        <Link to="/login" onClick={() => setIsOpen(false)}>Sign Up</Link>
-                      </Button>
-                    </div>
-                  )}
+                    ) : (
+                      <div className="flex flex-col gap-2">
+                        <Button asChild className="w-full">
+                          <Link to="/login" onClick={closeMenu}>Login</Link>
+                        </Button>
+                        <Button asChild variant="secondary" className="w-full">
+                          <Link to="/login" onClick={closeMenu}>Sign Up</Link>
+                        </Button>
+                      </div>
+                    )}
+                  </div>
                 </div>
               </div>
-            )}
+            </div>
 
             {/* Desktop Auth Buttons */}
-            <div className="hidden md:flex items-center gap-2">
+            <div className="hidden lg:flex items-center gap-2">
               {isAuthenticated ? (
                 <>
                   <Link to="/profile">

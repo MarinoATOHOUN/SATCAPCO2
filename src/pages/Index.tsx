@@ -201,17 +201,15 @@ const Index = () => {
               </p>
               <p className="text-lg text-muted-foreground mb-6">
                 SATCAP-CO₂ is a cutting-edge platform dedicated to monitoring and analyzing 
-                greenhouse gas emissions using satellite technology. Our mission is to provide 
+                greenhouse gas emissions using satellite technology. 
+                SATCAP-CO2, a downstream EO solution within the entire carbon dioxide value chain 
+                for effective and efficient DAC and CCUS. Our mission is to provide 
                 accurate, real-time data to researchers, policymakers, and organizations 
                 committed to combating climate change.
               </p>
               <p className="text-lg text-muted-foreground mb-6">
                 By leveraging advanced satellite imagery and data analytics, we track CO₂ and 
                 CH₄ emissions globally, offering insights that drive meaningful environmental action.
-              </p>
-              <p className="text-lg text-muted-foreground mb-6">
-                SATCAP-CO2, a downstream EO solution within the entire carbon dioxide value chain 
-                for effective and efficient DAC and CCUS.
               </p>
               <div className="flex flex-wrap gap-4">
                 <div className="flex items-center gap-2 text-primary">

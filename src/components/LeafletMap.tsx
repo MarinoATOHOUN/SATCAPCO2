@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { MapContainer, TileLayer, CircleMarker, Popup, useMap } from "react-leaflet";
+import { MapContainer, TileLayer, CircleMarker, Popup, useMap, useMapEvents } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import "@/lib/leaflet-config";
 
@@ -27,9 +27,9 @@ const getColorByType = (value: number, type: 'co2' | 'ch4' | 'co') => {
 
 interface LeafletMapProps {
   onMapReady?: (map: any) => void;
+  onClick?: (e: any) => void;
 }
 
-// Component to get map instance
 const MapInstanceHandler: React.FC<{ onMapReady?: (map: any) => void }> = ({ onMapReady }) => {
   const map = useMap();
   
@@ -42,7 +42,18 @@ const MapInstanceHandler: React.FC<{ onMapReady?: (map: any) => void }> = ({ onM
   return null;
 };
 
-export const LeafletMap: React.FC<LeafletMapProps> = ({ onMapReady }) => {
+const MapClickHandler: React.FC<{ onClick?: (e: any) => void }> = ({ onClick }) => {
+    useMapEvents({
+        click(e) {
+            if (onClick) {
+                onClick(e);
+            }
+        },
+    });
+    return null;
+}
+
+export const LeafletMap: React.FC<LeafletMapProps> = ({ onMapReady, onClick }) => {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -61,6 +72,7 @@ export const LeafletMap: React.FC<LeafletMapProps> = ({ onMapReady }) => {
       className="z-0"
     >
       <MapInstanceHandler onMapReady={onMapReady} />
+      <MapClickHandler onClick={onClick} /> 
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
