@@ -34,11 +34,11 @@ export const MapModal: React.FC<MapModalProps> = ({ isOpen, onClose, onSelectCoo
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-4xl h-[80vh]">
+      <DialogContent className="max-w-6xl w-full h-[90vh] flex flex-col">
         <DialogHeader>
           <DialogTitle>Select Coordinates</DialogTitle>
         </DialogHeader>
-        <div className="relative h-full">
+        <div className="relative flex-grow">
             <Suspense fallback={<div className="flex items-center justify-center h-full">Loading map...</div>}>
                 <LeafletMap onMapReady={setMap} onClick={handleMapClick} />
             </Suspense>
@@ -48,7 +48,7 @@ export const MapModal: React.FC<MapModalProps> = ({ isOpen, onClose, onSelectCoo
                 </div>
             )}
         </div>
-        <DialogFooter>
+        <DialogFooter className="mt-4">
           <Button variant="outline" onClick={onClose}>
             Cancel
           </Button>

@@ -30,9 +30,10 @@ const GasOptions = [
   { value: "ch4", label: "CH₄" },
   { value: "co", label: "CO" },
   { value: "n2o", label: "N₂O" },
+  { value: "no2", label: "NO₂" },
   { value: "co2_ch4", label: "CO₂ & CH₄" },
   { value: "co2_co", label: "CO₂ & CO" },
-  { value: "all", label: "All Gases (CO₂, CH₄, CO, N₂O)" },
+  { value: "all", label: "All Gases (CO₂, CH₄, CO, N₂O, NO₂)" },
 ];
 
 export const FilterBar = () => {

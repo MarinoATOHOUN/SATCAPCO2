@@ -228,6 +228,18 @@ const Index = () => {
                   <CheckCircle2 className="h-5 w-5" />
                   <span className="font-medium">Climate Tech and AI</span>
                 </div>
+                <div className="flex items-center gap-2 text-primary">
+                  <CheckCircle2 className="h-5 w-5" />
+                  <span className="font-medium">Climate & Heath</span>
+                </div>
+                <div className="flex items-center gap-2 text-primary">
+                  <CheckCircle2 className="h-5 w-5" />
+                  <span className="font-medium">HeathTech</span>
+                </div>
+                <div className="flex items-center gap-2 text-primary">
+                  <CheckCircle2 className="h-5 w-5" />
+                  <span className="font-medium">DeepTech</span>
+                </div>
               </div>
             </div>
             

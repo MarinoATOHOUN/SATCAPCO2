@@ -90,7 +90,7 @@ const Partners = () => {
     {
       icon: Globe,
       title: "Technology Partners",
-      description: "Integrate our CO₂, CH4, CO, NO2 monitoring data into your applications and services.",
+      description: "Integrate our CO₂, CH4, CO, NO2, N20 monitoring data into your applications and services.",
       benefits: ["API access", "Technical support", "White-label solutions"]
     },
     {
