@@ -80,7 +80,7 @@ const DataDownload = () => {
             <h2 className="text-xl font-semibold text-foreground">Download Options</h2>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
             <div className="space-y-2">
               <Label htmlFor="format">File Format</Label>
               <Select value={selectedFormat} onValuechange={setSelectedFormat}>
@@ -132,7 +132,7 @@ const DataDownload = () => {
             </div>
           </div>
 
-          <div className="flex gap-3">
+          <div className="flex flex-col sm:flex-row gap-3">
             <Dialog open={isFormOpen} onOpenChange={setIsFormOpen}>
               <DialogTrigger asChild>
                 <Button className="flex-1">
@@ -140,7 +140,7 @@ const DataDownload = () => {
                   Download Full Dataset
                 </Button>
               </DialogTrigger>
-              <DialogContent className="sm:max-w-md">
+              <DialogContent className="sm:max-w-lg">
                 <DialogHeader>
                   <DialogTitle className="flex items-center gap-2">
                     <ShieldCheck className="text-primary" /> Secure Data Access
@@ -150,7 +150,7 @@ const DataDownload = () => {
                   </DialogDescription>
                 </DialogHeader>
                 <div className="space-y-4 py-4">
-                  <div className="grid grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="space-y-2">
                       <Label htmlFor="firstName">First Name *</Label>
                       <Input id="firstName" value={formData.firstName} onChange={handleFormChange} placeholder="Marie" />
