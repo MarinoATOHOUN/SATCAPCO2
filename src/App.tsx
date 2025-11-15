@@ -40,6 +40,7 @@ import Blog from "./pages/Blog";
 import Press from "./pages/Press";
 import Status from "./pages/Status";
 import Documentation from "./pages/Documentation";
+import CustomerTestimonials from "./pages/CustomerTestimonials";
 
 const queryClient = new QueryClient();
 
@@ -79,6 +80,7 @@ function App() {
           <Route path="/api-documentation" element={<ApiDocumentation />} />
           <Route path="/pricing" element={<Pricing />} />
           <Route path="/customer-stories" element={<CustomerStories />} />
+          <Route path="/customer-testimonials" element={<CustomerTestimonials />} />
           <Route path="/our-mission" element={<OurMission />} />
           <Route path="/our-team" element={<OurTeam />} />
           <Route path="/our-roadmap" element={<OurRoadmap />} />

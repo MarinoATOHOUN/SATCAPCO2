@@ -15,7 +15,7 @@ const Footer = () => {
 
   const resourceLinks = [
     { href: "/blog", text: "Blog" },
-    { href: "/customer-stories", text: "Témoignages de clients" },
+    { href: "/customer-testimonials", text: "Témoignages de clients" },
     { href: "/documentation", text: "Documentation" },
     { href: "/faq", text: "FAQ" },
     { href: "/press", text: "Presse" },

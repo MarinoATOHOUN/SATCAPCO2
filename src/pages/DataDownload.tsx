@@ -7,10 +7,12 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { LogOut, User, Download, Filter, Calendar } from "lucide-react";
+import { LogOut, User, Download, Filter, Calendar, ShieldCheck } from "lucide-react";
 import { toast } from "sonner";
 import Header from "@/components/Header";
 import CosmoLABHubLogo from '../assets/CosmoLABHubLogoFooter.png';
+import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { Textarea } from "@/components/ui/textarea";
 
 // Mock data for the table
 const mockData = [
@@ -31,10 +33,27 @@ const DataDownload = () => {
   const [selectedGas, setSelectedGas] = useState("all");
   const [dateFrom, setDateFrom] = useState("");
   const [dateTo, setDateTo] = useState("");
+  const [isFormOpen, setIsFormOpen] = useState(false);
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    location: '',
+    position: '',
+    justification: '',
+  });
 
-  const handleDownload = () => {
-    toast.success(`Downloading data as ${selectedFormat.toUpperCase()}...`);
-    // In production, this would trigger actual file download
+  const handleFormChange = (e) => {
+    const { id, value } = e.target;
+    setFormData(prev => ({ ...prev, [id]: value }));
+  };
+
+  const handleFormSubmitAndDownload = () => {
+    if (!formData.firstName || !formData.lastName || !formData.location || !formData.position) {
+      toast.error("Please fill in all required fields.");
+      return;
+    }
+    toast.success(`Form submitted! Downloading data as ${selectedFormat.toUpperCase()}...`);
+    setIsFormOpen(false);
   };
 
   const handleExportFiltered = () => {
@@ -45,9 +64,7 @@ const DataDownload = () => {
     <div className="min-h-screen bg-background">
       <Header />
 
-      {/* Main Content */}
       <main className="container mx-auto px-4 py-8">
-        {/* Page Title */}
         <div className="bg-green-bg rounded-lg p-6 mb-8">
           <h1 className="text-3xl font-bold text-primary text-center">
             Data Download & Export
@@ -57,7 +74,6 @@ const DataDownload = () => {
           </p>
         </div>
 
-        {/* Download Options */}
         <Card className="p-6 shadow-card mb-8">
           <div className="flex items-center gap-2 mb-4">
             <Download className="h-5 w-5 text-primary" />
@@ -67,7 +83,7 @@ const DataDownload = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
             <div className="space-y-2">
               <Label htmlFor="format">File Format</Label>
-              <Select value={selectedFormat} onValueChange={setSelectedFormat}>
+              <Select value={selectedFormat} onValuechange={setSelectedFormat}>
                 <SelectTrigger id="format">
                   <SelectValue />
                 </SelectTrigger>
@@ -117,10 +133,55 @@ const DataDownload = () => {
           </div>
 
           <div className="flex gap-3">
-            <Button onClick={handleDownload} className="flex-1">
-              <Download className="mr-2 h-4 w-4" />
-              Download Full Dataset
-            </Button>
+            <Dialog open={isFormOpen} onOpenChange={setIsFormOpen}>
+              <DialogTrigger asChild>
+                <Button className="flex-1">
+                  <Download className="mr-2 h-4 w-4" />
+                  Download Full Dataset
+                </Button>
+              </DialogTrigger>
+              <DialogContent className="sm:max-w-md">
+                <DialogHeader>
+                  <DialogTitle className="flex items-center gap-2">
+                    <ShieldCheck className="text-primary" /> Secure Data Access
+                  </DialogTitle>
+                  <DialogDescription className="pt-2">
+                    To protect our data integrity and fulfill our reporting duties, we require a quick verification. Your information will be used solely for authentication and will not be shared or sold. It helps us understand how our data is used and prevent misuse.
+                  </DialogDescription>
+                </DialogHeader>
+                <div className="space-y-4 py-4">
+                  <div className="grid grid-cols-2 gap-4">
+                    <div className="space-y-2">
+                      <Label htmlFor="firstName">First Name *</Label>
+                      <Input id="firstName" value={formData.firstName} onChange={handleFormChange} placeholder="Marie" />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="lastName">Last Name *</Label>
+                      <Input id="lastName" value={formData.lastName} onChange={handleFormChange} placeholder="Curie" />
+                    </div>
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="idPhoto">ID Photo *</Label>
+                    <Input id="idPhoto" type="file" />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="location">Location (City, Country) *</Label>
+                    <Input id="location" value={formData.location} onChange={handleFormChange} placeholder="Paris, France" />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="position">Position / Title *</Label>
+                    <Input id="position" value={formData.position} onChange={handleFormChange} placeholder="Physicist and Chemist" />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="justification">Justification (Optional)</Label>
+                    <Textarea id="justification" value={formData.justification} onChange={handleFormChange} placeholder="Tell us briefly how you intend to use this data..." />
+                  </div>
+                </div>
+                <DialogFooter>
+                  <Button onClick={handleFormSubmitAndDownload} className="w-full">Submit and Download</Button>
+                </DialogFooter>
+              </DialogContent>
+            </Dialog>
             <Button onClick={handleExportFiltered} variant="outline">
               <Filter className="mr-2 h-4 w-4" />
               Export Filtered
@@ -128,7 +189,6 @@ const DataDownload = () => {
           </div>
         </Card>
 
-        {/* Data Preview Table */}
         <Card className="p-6 shadow-card">
           <div className="flex items-center gap-2 mb-4">
             <Calendar className="h-5 w-5 text-primary" />
@@ -172,7 +232,6 @@ const DataDownload = () => {
         </Card>
       </main>
 
-      {/* Footer */}
       <footer className="border-t border-border py-12">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
