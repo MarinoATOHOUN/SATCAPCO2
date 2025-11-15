@@ -42,12 +42,13 @@ const DataDownload = () => {
     justification: '',
   });
 
-  const handleFormChange = (e) => {
+  const handleFormChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { id, value } = e.target;
     setFormData(prev => ({ ...prev, [id]: value }));
   };
 
-  const handleFormSubmitAndDownload = () => {
+  const handleFormSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
     if (!formData.firstName || !formData.lastName || !formData.location || !formData.position) {
       toast.error("Please fill in all required fields.");
       return;
@@ -83,7 +84,7 @@ const DataDownload = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
             <div className="space-y-2">
               <Label htmlFor="format">File Format</Label>
-              <Select value={selectedFormat} onValuechange={setSelectedFormat}>
+              <Select value={selectedFormat} onValueChange={setSelectedFormat}>
                 <SelectTrigger id="format">
                   <SelectValue />
                 </SelectTrigger>
@@ -140,7 +141,7 @@ const DataDownload = () => {
                   Download Full Dataset
                 </Button>
               </DialogTrigger>
-              <DialogContent className="sm:max-w-lg">
+              <DialogContent className="sm:max-w-2xl flex flex-col max-h-[95vh]">
                 <DialogHeader>
                   <DialogTitle className="flex items-center gap-2">
                     <ShieldCheck className="text-primary" /> Secure Data Access
@@ -149,36 +150,40 @@ const DataDownload = () => {
                     To protect our data integrity and fulfill our reporting duties, we require a quick verification. Your information will be used solely for authentication and will not be shared or sold. It helps us understand how our data is used and prevent misuse.
                   </DialogDescription>
                 </DialogHeader>
-                <div className="space-y-4 py-4">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div className="space-y-2">
-                      <Label htmlFor="firstName">First Name *</Label>
-                      <Input id="firstName" value={formData.firstName} onChange={handleFormChange} placeholder="Marie" />
+                <div className="flex-grow overflow-y-auto -mx-6 px-6">
+                  <form id="secure-data-form" onSubmit={handleFormSubmit} className="py-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div className="space-y-2">
+                        <Label htmlFor="firstName">First Name *</Label>
+                        <Input id="firstName" value={formData.firstName} onChange={handleFormChange} placeholder="Marie" required />
+                      </div>
+                      <div className="space-y-2">
+                        <Label htmlFor="lastName">Last Name *</Label>
+                        <Input id="lastName" value={formData.lastName} onChange={handleFormChange} placeholder="Curie" required />
+                      </div>
+                      <div className="space-y-2 md:col-span-2">
+                        <Label htmlFor="idPhoto">ID Photo *</Label>
+                        <Input id="idPhoto" type="file" required />
+                      </div>
+                      <div className="space-y-2 md:col-span-2">
+                        <Label htmlFor="location">Location (City, Country) *</Label>
+                        <Input id="location" value={formData.location} onChange={handleFormChange} placeholder="Paris, France" required />
+                      </div>
+                      <div className="space-y-2 md:col-span-2">
+                        <Label htmlFor="position">Position / Title *</Label>
+                        <Input id="position" value={formData.position} onChange={handleFormChange} placeholder="Physicist and Chemist" required />
+                      </div>
+                      <div className="space-y-2 md:col-span-2">
+                        <Label htmlFor="justification">Justification (Optional)</Label>
+                        <Textarea id="justification" value={formData.justification} onChange={handleFormChange} placeholder="Tell us briefly how you intend to use this data..." />
+                      </div>
                     </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="lastName">Last Name *</Label>
-                      <Input id="lastName" value={formData.lastName} onChange={handleFormChange} placeholder="Curie" />
-                    </div>
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="idPhoto">ID Photo *</Label>
-                    <Input id="idPhoto" type="file" />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="location">Location (City, Country) *</Label>
-                    <Input id="location" value={formData.location} onChange={handleFormChange} placeholder="Paris, France" />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="position">Position / Title *</Label>
-                    <Input id="position" value={formData.position} onChange={handleFormChange} placeholder="Physicist and Chemist" />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="justification">Justification (Optional)</Label>
-                    <Textarea id="justification" value={formData.justification} onChange={handleFormChange} placeholder="Tell us briefly how you intend to use this data..." />
-                  </div>
+                  </form>
                 </div>
-                <DialogFooter>
-                  <Button onClick={handleFormSubmitAndDownload} className="w-full">Submit and Download</Button>
+                <DialogFooter className="pt-4 border-t">
+                  <Button type="submit" form="secure-data-form" className="w-full">
+                    Submit and Download
+                  </Button>
                 </DialogFooter>
               </DialogContent>
             </Dialog>
