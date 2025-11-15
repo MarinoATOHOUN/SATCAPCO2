@@ -4,38 +4,38 @@ import { Logo } from "./Logo";
 
 const Footer = () => {
   const productLinks = [
-    { href: "/features/satellite-data", text: "Données satellitaires" },
-    { href: "/features/global-mapping", text: "Cartographie mondiale" },
-    { href: "/features/data-analytics", text: "Analyse de données" },
-    { href: "/features/trend-analysis", text: "Analyse des tendances" },
-    { href: "/features/api-access", text: "Accès API" },
-    { href: "/features/carbon-market", text: "Marché du carbone" },
-    { href: "/features/climate-health", text: "Santé climatique" },
+    { href: "/features/satellite-data", text: "Satellite Data" },
+    { href: "/features/global-mapping", text: "Global Mapping" },
+    { href: "/features/data-analytics", text: "Data Analytics" },
+    { href: "/features/trend-analysis", text: "Trend Analysis" },
+    { href: "/features/api-access", text: "API Access" },
+    { href: "/features/carbon-market", text: "Carbon Market" },
+    { href: "/features/climate-health", text: "Climate Health" },
   ];
 
   const resourceLinks = [
     { href: "/blog", text: "Blog" },
-    { href: "/customer-testimonials", text: "Témoignages de clients" },
+    { href: "/customer-testimonials", text: "Customer Testimonials" },
     { href: "/documentation", text: "Documentation" },
     { href: "/faq", text: "FAQ" },
-    { href: "/press", text: "Presse" },
-    { href: "/status", text: "Statut" },
+    { href: "/press", text: "Press" },
+    { href: "/status", text: "Status" },
   ];
 
   const companyLinks = [
-    { href: "/our-mission", text: "Notre mission" },
-    { href: "/our-team", text: "Notre équipe" },
-    { href: "/our-roadmap", text: "Notre feuille de route" },
-    { href: "/careers", text: "Carrières" },
-    { href: "/partners", text: "Partenaires" },
+    { href: "/our-mission", text: "Our Mission" },
+    { href: "/our-team", text: "Our Team" },
+    { href: "/our-roadmap", text: "Our Roadmap" },
+    { href: "/careers", text: "Careers" },
+    { href: "/partners", text: "Partners" },
     { href: "/contact", text: "Contact" },
   ];
 
   const legalLinks = [
-    { href: "/privacy-policy", text: "Politique de confidentialité" },
-    { href: "/terms-of-service", text: "Conditions d'utilisation" },
-    { href: "/security-privacy", text: "Sécurité et confidentialité" },
-    { href: "/trust-transparency", text: "Confiance et transparence" },
+    { href: "/privacy-policy", text: "Privacy Policy" },
+    { href: "/terms-of-service", text: "Terms of Service" },
+    { href: "/security-privacy", text: "Security and Privacy" },
+    { href: "/trust-transparency", text: "Trust and Transparency" },
   ];
 
   const FooterLink = ({ href, text }: { href: string; text: string }) => (
@@ -61,28 +61,28 @@ const Footer = () => {
           </div>
 
           <div>
-            <h3 className="font-semibold mb-4 text-foreground">Produit</h3>
+            <h3 className="font-semibold mb-4 text-foreground">Product</h3>
             <ul className="space-y-2">
               {productLinks.map((link) => <FooterLink key={link.href} {...link} />)}
             </ul>
           </div>
 
           <div>
-            <h3 className="font-semibold mb-4 text-foreground">Ressources</h3>
+            <h3 className="font-semibold mb-4 text-foreground">Resources</h3>
             <ul className="space-y-2">
               {resourceLinks.map((link) => <FooterLink key={link.href} {...link} />)}
             </ul>
           </div>
 
           <div>
-            <h3 className="font-semibold mb-4 text-foreground">Entreprise</h3>
+            <h3 className="font-semibold mb-4 text-foreground">Company</h3>
             <ul className="space-y-2">
               {companyLinks.map((link) => <FooterLink key={link.href} {...link} />)}
             </ul>
           </div>
 
           <div>
-            <h3 className="font-semibold mb-4 text-foreground">Légal</h3>
+            <h3 className="font-semibold mb-4 text-foreground">Legal</h3>
             <ul className="space-y-2">
               {legalLinks.map((link) => <FooterLink key={link.href} {...link} />)}
             </ul>
