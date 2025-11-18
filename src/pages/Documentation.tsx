@@ -81,7 +81,7 @@ const Documentation = () => {
               <div className="p-8 h-[70vh] overflow-y-auto">
                 <Card id="welcome" className="mb-8">
                   <CardHeader>
-                    <CardTitle>Welcome to CosmoLABHub!</CardTitle>
+                    <CardTitle>Welcome to CosmoLAB Hub!</CardTitle>
                   </CardHeader>
                   <CardContent>
                     <p className="text-muted-foreground">This documentation provides all the information you need to use and understand our application. Whether you are a developer, a user, or a partner, you will find useful resources here.</p>
@@ -93,7 +93,7 @@ const Documentation = () => {
                     <CardTitle>Overview</CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-muted-foreground">CosmoLABHub is a platform for visualizing and analyzing climate data. It provides a dashboard with various charts and a map to explore CO2 emissions data. Our goal is to make climate data accessible and understandable for everyone.</p>
+                    <p className="text-muted-foreground">CosmoLAB Hub is a platform for visualizing and analyzing climate data. It provides a dashboard with various charts and a map to explore CO2 emissions data. Our goal is to make climate data accessible and understandable for everyone.</p>
                   </CardContent>
                 </Card>
 

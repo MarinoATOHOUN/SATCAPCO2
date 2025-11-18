@@ -27,7 +27,6 @@ import CarbonMarket from "./pages/features/CarbonMarket";
 import ClimateHealth from "./pages/features/ClimateHealth";
 import SecurityPrivacy from "./pages/SecurityPrivacy";
 import TrustTransparency from "./pages/TrustTransparency";
-import ApiPlatform from "./pages/ApiPlatform";
 import ApiDocumentation from "./pages/ApiDocumentation";
 import Pricing from "./pages/Pricing";
 import CustomerStories from "./pages/CustomerStories";
@@ -52,10 +51,16 @@ function App() {
       }
     };
 
+    const handleContextMenu = (e: MouseEvent) => {
+      e.preventDefault();
+    };
+
     window.addEventListener("keyup", handleKeyDown);
+    document.addEventListener("contextmenu", handleContextMenu);
 
     return () => {
       window.removeEventListener("keyup", handleKeyDown);
+      document.removeEventListener("contextmenu", handleContextMenu);
     };
   }, []);
 
@@ -105,7 +110,6 @@ function App() {
             <Route path="/features/climate-health" element={<ClimateHealth />} />
             <Route path="/security-privacy" element={<SecurityPrivacy />} />
             <Route path="/trust-transparency" element={<TrustTransparency />} />
-            <Route path="/api-platform" element={<ApiPlatform />} />
             <Route path="/api-documentation" element={<ApiDocumentation />} />
             <Route path="/pricing" element={<Pricing />} />
             <Route path="/customer-stories" element={<CustomerStories />} />

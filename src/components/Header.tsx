@@ -50,6 +50,7 @@ const Header = () => {
     { href: "/data-visualization", label: "Data Visualization", icon: BarChart2 },
     { href: "/data-download", label: "Data Download", icon: Download },
     { href: "/api-key", label: "API", icon: Key },
+    { href: "/features/climate-health", label: "SATCAP Health", icon: Heart },
     ...commonLinks,
   ];
 
@@ -60,7 +61,7 @@ const Header = () => {
   ];
 
   const desktopNavLinks = isAuthenticated 
-    ? loggedInLinks.slice(0, 4) // Show first 4 for logged in users
+    ? loggedInLinks.slice(0, 5) // Show first 5 for logged in users
     : loggedOutLinks;
 
   const MobileNav = () => (

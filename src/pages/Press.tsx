@@ -9,21 +9,21 @@ import { Badge } from "@/components/ui/badge";
 
 const pressArticles = [
   {
-    title: "CosmoLABHub Launches New Platform to Democratize Climate Data",
+    title: "CosmoLAB Hub Launches New Platform to Democratize Climate Data",
     source: "TechCrunch",
     date: "2024-07-28",
     category: "Launch",
     url: "#",
   },
   {
-    title: "The Future of Climate Tech: An Interview with the CEO of CosmoLABHub",
+    title: "The Future of Climate Tech: An Interview with the CEO of CosmoLAB Hub",
     source: "Forbes",
     date: "2024-07-29",
     category: "Interview",
     url: "#",
   },
   {
-    title: "How CosmoLABHub is Using AI to Combat Climate Change",
+    title: "How CosmoLAB Hub is Using AI to Combat Climate Change",
     source: "Wired",
     date: "2024-08-05",
     category: "Technology",

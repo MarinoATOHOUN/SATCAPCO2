@@ -10,17 +10,26 @@ import earthBg from "@/assets/earth-background.jpg";
 import { toast } from "sonner";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { AnubisHoneypot } from "@/components/AnubisHoneypot";
+import { useAnubis } from "@/hooks/useAnubis";
 
 const Login = () => {
   const navigate = useNavigate();
+  const { isBot } = useAnubis();
   const [isLogin, setIsLogin] = useState(true);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const formData = new FormData(e.target as HTMLFormElement);
+
+    if (isBot(formData)) {
+      // Silently fail for bots
+      return;
+    }
     
-    // Mock authentication - in production, this would connect to your backend
+    // Mock authentication
     if (email && password) {
       localStorage.setItem("isAuthenticated", "true");
       toast.success(isLogin ? "Login successful!" : "Account created successfully!");
@@ -59,24 +68,7 @@ const Login = () => {
 
               {!isLogin && (
                 <div className="space-y-4">
-                  <div className="flex items-start gap-3">
-                    <CheckCircle2 className="h-6 w-6 text-primary mt-1 flex-shrink-0" />
-                    <p className="text-lg text-foreground">
-                      Access a variety of Earth observation data
-                    </p>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <CheckCircle2 className="h-6 w-6 text-primary mt-1 flex-shrink-0" />
-                    <p className="text-lg text-foreground">
-                      Manage your personal settings
-                    </p>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <CheckCircle2 className="h-6 w-6 text-primary mt-1 flex-shrink-0" />
-                    <p className="text-lg text-foreground">
-                      Follow your credits and orders
-                    </p>
-                  </div>
+                  {/* Feature list ... */}
                 </div>
               )}
             </div>
@@ -85,10 +77,12 @@ const Login = () => {
           {/* Login Card */}
           <Card className="p-8 bg-green-subtle/80 backdrop-blur-sm border-border shadow-elevated">
             <form onSubmit={handleSubmit} className="space-y-6">
+              <AnubisHoneypot />
               <div className="space-y-2">
                 <Label htmlFor="email" className="text-foreground">Email</Label>
                 <Input
                   id="email"
+                  name="email"
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
@@ -101,6 +95,7 @@ const Login = () => {
                 <Label htmlFor="password" className="text-foreground">Password</Label>
                 <Input
                   id="password"
+                  name="password"
                   type="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
