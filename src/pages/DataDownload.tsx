@@ -49,7 +49,7 @@ const DataDownload = () => {
 
   const handleFormSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formData.firstName || !formData.lastName || !formData.location || !formData.position) {
+    if (!formData.firstName || !formData.lastName || !formData.location || !formData.position || !formData.justification) {
       toast.error("Please fill in all required fields.");
       return;
     }
@@ -174,8 +174,8 @@ const DataDownload = () => {
                         <Input id="position" value={formData.position} onChange={handleFormChange} placeholder="Physicist and Chemist" required />
                       </div>
                       <div className="space-y-2 md:col-span-2">
-                        <Label htmlFor="justification">Justification (Optional)</Label>
-                        <Textarea id="justification" value={formData.justification} onChange={handleFormChange} placeholder="Tell us briefly how you intend to use this data..." />
+                        <Label htmlFor="justification">Justification *</Label>
+                        <Textarea id="justification" value={formData.justification} onChange={handleFormChange} placeholder="Tell us briefly how you intend to use this data..." required />
                       </div>
                     </div>
                   </form>
